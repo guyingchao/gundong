@@ -15,7 +15,7 @@
             <span class="red">{{item.amount}}</span>
             <span>万</span>
           </li>
-          <li v-for="(item, index) in marqueeList" v-bind:key="index + 'f'">
+          <li v-for="(item, index) in marqueeList" :key="index + 'f'">
             <span>{{item.name}}</span>
             <span>在</span>
             <span class="red">{{item.city}}</span>
@@ -153,4 +153,3 @@ export default {
     color: #FF0101;
   }
 </style>
-

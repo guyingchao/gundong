@@ -4,7 +4,11 @@ import HelloWorld from '@/components/HelloWorld'
 import home from '@/components/home.vue'
 import gun from '@/components/gundong.vue'
 
-// const home = r => require.ensure([], () => r(require('./../components/home.vue')), 'home')
+// const head = r => require.ensure([], () => r(require('./../components/headtail/head.vue')), 'head')
+const index = r => require.ensure([], () => r(require('./../components/index.vue')), 'index')
+const jiaocheng = r => require.ensure([], () => r(require('./../components/jiaocheng.vue')), 'jiaocheng')
+const contract = r => require.ensure([], () => r(require('./../components/contract.vue')), 'contract')
+const ironore = r => require.ensure([], () => r(require('./../components/ironore/ironore.vue')), 'ironore')
 const User = {
   template: `<div>User {{ $route.params.id }}</div>`
 }
@@ -15,10 +19,25 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/index',
       name: 'HelloWorld',
       component: HelloWorld
     },
+    {
+      path: '/index',
+      name: 'index',
+      component: index
+    },
+    {
+      path: '/ironore',
+      name: 'ironore',
+      component: ironore
+    },
+    /*{
+      path: '/head',
+      name: 'head',
+      component: head
+    },*/
     {
       path: '/home',
       name: 'home',
@@ -32,6 +51,16 @@ export default new Router({
       path: '/gun',
       name: 'gun',
       component: gun
+    },
+    {
+      path: '/jiaocheng',
+      name: 'jiaocheng',
+      component: jiaocheng
+    },
+    {
+      path: '/contract',
+      name: 'contract',
+      component: contract
     }
   ]
 })

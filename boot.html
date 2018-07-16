@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .content .nav {
+      float: right;
+      width: 750px;
+      position: relative;
+    }
+    .hex-wrap {
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .hex-wrap1 {
+      left: 170px;
+      top: 0px;
+    }
+
+    .hex-wrap2 {
+      left: 90px;
+      top: 148px;
+    }
+
+    .hex-wrap3 {
+      left: 0px;
+      top: 296px;
+    }
+
+    .hex-wrap4 {
+      left: 300px;
+      top: 94px;
+    }
+
+    .hex-wrap5 {
+      left: 215px;
+      top: 242px;
+    }
+
+    .hex-wrap6 {
+      left: 516px;
+      top: 27px;
+    }
+
+    .hex-wrap7 {
+      left: 435px;
+      top: 175px;
+    }
+
+    .hex-wrap8 {
+      left: 348px;
+      top: 323px;
+    }
+
+    .fore {
+      /*绘制一个宽80px,高136px 的长方形*/
+      width: 80px;
+      height: 136px;
+      text-align: center;
+      position: relative;
+      font-size: 24px;
+      border-top: 1px solid #dfe8f2;
+      border-bottom: 1px solid #dfe8f2;
+    }
+
+    .hex-border-left {
+      position: relative;
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 69px solid transparent;
+      border-bottom: 69px solid transparent;
+    }
+
+    .hex-left {
+      /*左边的三角形*/
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 68px solid transparent;
+      border-bottom: 68px solid transparent;
+      position: absolute;
+      left: 1px;
+      top: -68px;
+    }
+
+    .hex-border-right {
+      position: relative;
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 69px solid transparent;
+      border-bottom: 69px solid transparent;
+    }
+
+    .hex-right {
+      /*右边的三角形*/
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 68px solid transparent;
+      border-bottom: 68px solid transparent;
+      position: absolute;
+      right: 1px;
+      top: -68px;
+    }
+
+    .fore a {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      position: absolute;
+      white-space: nowrap;
+      width: 150px;
+      text-align: center;
+      display: block;
+      top: 50px;
+      left: -35px;
+      z-index: 99;
+    }
+
+    .hex-border-left {
+      border-right: 41px solid #fff;
+
+    }
+
+    .hex-border-right {
+      border-left: 41px solid #fff;
+    }
+
+    .fore1 {
+      background-color: #3498db;
+    }
+
+    .hex-border-left1 .hex-left {
+      border-right: 40px solid #3498db;
+
+    }
+
+    .hex-border-right1 .hex-right {
+      border-left: 40px solid #3498db;
+
+    }
+
+    .fore2 {
+      background-color: #1abc9c;
+    }
+
+    .hex-border-left2 .hex-left {
+      border-right: 40px solid #1abc9c;
+
+    }
+
+    .hex-border-right2 .hex-right {
+      border-left: 40px solid #1abc9c;
+
+    }
+
+    .fore3 {
+      background-color: #f1c40f;
+    }
+
+    .hex-border-left3 .hex-left {
+      border-right: 40px solid #f1c40f;
+
+    }
+
+    .hex-border-right3 .hex-right {
+      border-left: 40px solid #f1c40f;
+
+    }
+
+    .fore4 {
+      background-color: #9b59b6;
+    }
+
+    .hex-border-left4 .hex-left {
+      border-right: 40px solid #9b59b6;
+
+    }
+
+    .hex-border-right4 .hex-right {
+      border-left: 40px solid #9b59b6;
+
+    }
+
+    .fore5 {
+      background-color: #95a5a6;
+    }
+
+    .hex-border-left5 .hex-left {
+      border-right: 40px solid #95a5a6;
+
+    }
+
+    .hex-border-right5 .hex-right {
+      border-left: 40px solid #95a5a6;
+
+    }
+
+    .fore6 {
+      background-color: #e74c3c;
+    }
+
+    .hex-border-left6 .hex-left {
+      border-right: 40px solid #e74c3c;
+
+    }
+
+    .hex-border-right6 .hex-right {
+      border-left: 40px solid #e74c3c;
+
+    }
+
+    .fore7 {
+      background-color: #2ecc71;
+    }
+
+    .hex-border-left7 .hex-left {
+      border-right: 40px solid #2ecc71;
+
+    }
+
+    .hex-border-right7 .hex-right {
+      border-left: 40px solid #2ecc71;
+
+    }
+
+    .fore8 {
+      background-color: #e67e22;
+    }
+
+    .hex-border-left8 .hex-left {
+      border-right: 40px solid #e67e22;
+
+    }
+
+    .hex-border-right8 .hex-right {
+      border-left: 40px solid #e67e22;
+
+    }
+
+    .hex-wrap1:hover .fore1 {
+      background-color: #39B0FF;
+      border-top: 1px solid #39B0FF;
+      border-bottom: 1px solid #39B0FF;
+    }
+
+    .hex-wrap1:hover .hex-border-left1 {
+      border-right: 41px solid #39B0FF;
+    }
+
+    .hex-wrap1:hover .hex-border-right1 {
+      border-left: 41px solid #39B0FF;
+    }
+
+    .hex-wrap1:hover .hex-left {
+      border-right: 40px solid #39B0FF;
+    }
+
+    .hex-wrap1:hover .hex-right {
+      border-left: 40px solid #39B0FF;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div style="width: 1200px;margin: auto;text-align: center">
+    <div>woshiguchao</div>
+    <img style="width: 100px;height: 100px" src="./src/assets/deng.png">
+    <div style="background-image: url('./src/assets/deng.png');width: 100px;height: 100px"></div>
+  </div>
+  <div class="nav">
+    <div class="hex-wrap clearfix hex-wrap1">
+      <div class="hex-border-left hex-border-left1 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore1 pull-left"><a href="javascript: void(0);">农业大数据</a></div>
+      <div class="hex-border-right hex-border-right1 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+
+    <div class="hex-wrap clearfix hex-wrap2">
+      <div class="hex-border-left hex-border-left2 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore2 pull-left"><a href="javascript: void(0);">物联监管</a></div>
+      <div class="hex-border-right hex-border-right2 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+
+    <div class="hex-wrap clearfix hex-wrap3">
+      <div class="hex-border-left hex-border-left3 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore3 pull-left"><a href="javascript: void(0);">畜牧</a></div>
+      <div class="hex-border-right hex-border-right3 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+
+    <div class="hex-wrap clearfix hex-wrap4">
+      <div class="hex-border-left hex-border-left4 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore4 pull-left"><a href="javascript: void(0);">质量溯源</a></div>
+      <div class="hex-border-right hex-border-right4 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+
+    <div class="hex-wrap clearfix hex-wrap5">
+      <div class="hex-border-left hex-border-left5 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore5 pull-left"><a href="javascript: void(0);">病虫害监测</a></div>
+      <div class="hex-border-right hex-border-right5 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+
+    <div class="hex-wrap clearfix hex-wrap6">
+      <div class="hex-border-left hex-border-left6 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore6 pull-left"><a href="javascript: void(0);">水产</a></div>
+      <div class="hex-border-right hex-border-right6 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+    <div class="hex-wrap clearfix hex-wrap7">
+      <div class="hex-border-left hex-border-left7 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore7 pull-left"><a href="javascript: void(0);">休闲旅游</a></div>
+      <div class="hex-border-right hex-border-right7 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+    <div class="hex-wrap clearfix hex-wrap8">
+      <div class="hex-border-left hex-border-left8 pull-left">
+        <div class="hex-left"></div>
+      </div>
+      <div class="fore fore8 pull-left"><a href="javascript: void(0);">电子商务</a></div>
+      <div class="hex-border-right hex-border-right8 pull-left">
+        <div class="hex-right"></div>
+      </div>
+    </div>
+  </div>
+  <!--<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">W3Cschool</a>
+    </div>
+    <div>
+      &lt;!&ndash;向左对齐&ndash;&gt;
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Java
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">jmeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li><a href="#">Jasper Report</a></li>
+            <li class="divider"></li>
+            <li><a href="#">分离的链接</a></li>
+            <li class="divider"></li>
+            <li><a href="#">另一个分离的链接</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <button type="submit" class="btn btn-default">
+          向左对齐-提交按钮
+        </button>
+      </form>
+      <p class="navbar-text navbar-left">向左对齐-文本</p>
+      &lt;!&ndash;向右对齐&ndash;&gt;
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Java <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">jmeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li><a href="#">Jasper Report</a></li>
+            <li class="divider"></li>
+            <li><a href="#">分离的链接</a></li>
+            <li class="divider"></li>
+            <li><a href="#">另一个分离的链接</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <button type="submit" class="btn btn-default">
+          向右对齐-提交按钮         </button>
+      </form>
+      <p class="navbar-text navbar-right">向右对齐-文本</p>
+    </div>
+  </nav>-->
+</div>
+</body>
+</html>
