@@ -11,275 +11,99 @@
       margin: 0;
       padding: 0;
     }
-    .content .nav {
-      float: right;
-      width: 750px;
-      position: relative;
+    div#outer {width: 500px;}
+    div#inner {text-indent: 10%;}
+    p {width: 200px;}
+
+    .content{
+      width: 200px;
+      height: 200px;
+      overflow-x: scroll;
+      overflow-y: scroll;
     }
-    .hex-wrap {
-      position: absolute;
-      cursor: pointer;
-    }
-
-    .hex-wrap1 {
-      left: 170px;
-      top: 0px;
-    }
-
-    .hex-wrap2 {
-      left: 90px;
-      top: 148px;
-    }
-
-    .hex-wrap3 {
-      left: 0px;
-      top: 296px;
-    }
-
-    .hex-wrap4 {
-      left: 300px;
-      top: 94px;
-    }
-
-    .hex-wrap5 {
-      left: 215px;
-      top: 242px;
-    }
-
-    .hex-wrap6 {
-      left: 516px;
-      top: 27px;
-    }
-
-    .hex-wrap7 {
-      left: 435px;
-      top: 175px;
-    }
-
-    .hex-wrap8 {
-      left: 348px;
-      top: 323px;
-    }
-
-    .fore {
-      /*绘制一个宽80px,高136px 的长方形*/
-      width: 80px;
-      height: 136px;
-      text-align: center;
-      position: relative;
-      font-size: 24px;
-      border-top: 1px solid #dfe8f2;
-      border-bottom: 1px solid #dfe8f2;
-    }
-
-    .hex-border-left {
-      position: relative;
-      content: "";
-      width: 0;
-      height: 0;
-      border-top: 69px solid transparent;
-      border-bottom: 69px solid transparent;
-    }
-
-    .hex-left {
-      /*左边的三角形*/
-      content: "";
-      width: 0;
-      height: 0;
-      border-top: 68px solid transparent;
-      border-bottom: 68px solid transparent;
-      position: absolute;
-      left: 1px;
-      top: -68px;
-    }
-
-    .hex-border-right {
-      position: relative;
-      content: "";
-      width: 0;
-      height: 0;
-      border-top: 69px solid transparent;
-      border-bottom: 69px solid transparent;
-    }
-
-    .hex-right {
-      /*右边的三角形*/
-      content: "";
-      width: 0;
-      height: 0;
-      border-top: 68px solid transparent;
-      border-bottom: 68px solid transparent;
-      position: absolute;
-      right: 1px;
-      top: -68px;
-    }
-
-    .fore a {
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
-      position: absolute;
-      white-space: nowrap;
-      width: 150px;
-      text-align: center;
-      display: block;
-      top: 50px;
-      left: -35px;
-      z-index: 99;
-    }
-
-    .hex-border-left {
-      border-right: 41px solid #fff;
-
-    }
-
-    .hex-border-right {
-      border-left: 41px solid #fff;
-    }
-
-    .fore1 {
-      background-color: #3498db;
-    }
-
-    .hex-border-left1 .hex-left {
-      border-right: 40px solid #3498db;
-
-    }
-
-    .hex-border-right1 .hex-right {
-      border-left: 40px solid #3498db;
-
-    }
-
-    .fore2 {
-      background-color: #1abc9c;
-    }
-
-    .hex-border-left2 .hex-left {
-      border-right: 40px solid #1abc9c;
-
-    }
-
-    .hex-border-right2 .hex-right {
-      border-left: 40px solid #1abc9c;
-
-    }
-
-    .fore3 {
-      background-color: #f1c40f;
-    }
-
-    .hex-border-left3 .hex-left {
-      border-right: 40px solid #f1c40f;
-
-    }
-
-    .hex-border-right3 .hex-right {
-      border-left: 40px solid #f1c40f;
-
-    }
-
-    .fore4 {
-      background-color: #9b59b6;
-    }
-
-    .hex-border-left4 .hex-left {
-      border-right: 40px solid #9b59b6;
-
-    }
-
-    .hex-border-right4 .hex-right {
-      border-left: 40px solid #9b59b6;
-
-    }
-
-    .fore5 {
-      background-color: #95a5a6;
-    }
-
-    .hex-border-left5 .hex-left {
-      border-right: 40px solid #95a5a6;
-
-    }
-
-    .hex-border-right5 .hex-right {
-      border-left: 40px solid #95a5a6;
-
-    }
-
-    .fore6 {
-      background-color: #e74c3c;
-    }
-
-    .hex-border-left6 .hex-left {
-      border-right: 40px solid #e74c3c;
-
-    }
-
-    .hex-border-right6 .hex-right {
-      border-left: 40px solid #e74c3c;
-
-    }
-
-    .fore7 {
-      background-color: #2ecc71;
-    }
-
-    .hex-border-left7 .hex-left {
-      border-right: 40px solid #2ecc71;
-
-    }
-
-    .hex-border-right7 .hex-right {
-      border-left: 40px solid #2ecc71;
-
-    }
-
-    .fore8 {
-      background-color: #e67e22;
-    }
-
-    .hex-border-left8 .hex-left {
-      border-right: 40px solid #e67e22;
-
-    }
-
-    .hex-border-right8 .hex-right {
-      border-left: 40px solid #e67e22;
-
-    }
-
-    .hex-wrap1:hover .fore1 {
-      background-color: #39B0FF;
-      border-top: 1px solid #39B0FF;
-      border-bottom: 1px solid #39B0FF;
-    }
-
-    .hex-wrap1:hover .hex-border-left1 {
-      border-right: 41px solid #39B0FF;
-    }
-
-    .hex-wrap1:hover .hex-border-right1 {
-      border-left: 41px solid #39B0FF;
-    }
-
-    .hex-wrap1:hover .hex-left {
-      border-right: 40px solid #39B0FF;
-    }
-
-    .hex-wrap1:hover .hex-right {
-      border-left: 40px solid #39B0FF;
+    .content::-webkit-scrollbar {
+      display: none;
     }
   </style>
 </head>
 <body>
 <div>
-  <div style="width: 1200px;margin: auto;text-align: center">
+  <!--<div class="outer-container">-->
+    <!--<div class="inner-container">-->
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Integer vehicula quam nibh, eu tristique tellus dignissim
+        quis. Integer condimentum ultrices elit ut mattis.
+        Praesent rhoncus tortor metus, nec pellentesque enim
+        mattis nec. Nulla vitae turpis ut dui consectetur
+        pellentesque quis vel est. Curabitur rutrum, mauris ut
+        mollis lobortis, sem est congue lectus, ut sodales nunc
+        leo a libero. Cras quis sapien in mi fringilla tempus
+        condimentum quis velit. Aliquam id aliquam arcu. Morbi
+        tristique aliquam rutrum. Duis tincidunt, orci suscipit
+        cursus molestie, purus nisi pharetra dui, tempor
+        dignissim felis turpis in mi. Vivamus ullamcorper arcu
+        sit amet mauris egestas egestas. Vestibulum turpis neque,
+        condimentum a tincidunt quis, molestie vel justo. Sed
+        molestie nunc dapibus arcu feugiat, ut sollicitudin metus
+        sagittis. Aliquam a volutpat sem. Quisque id magna
+        ultrices, lobortis dui eget, pretium libero. Curabitur
+        aliquam in ante eu ultricies.
+
+        Quisque vitae tincidunt purus. Vivamus feugiat bibendum
+        erat, nec interdum urna porta sed. Nunc lobortis neque
+        orci, ut suscipit nisl congue feugiat. Vivamus feugiat
+        tellus quis cursus sollicitudin. Curabitur dolor massa,
+        dictum ut ipsum in, porttitor pellentesque ante. Aenean
+        egestas cursus tempor. Maecenas semper tortor sit amet
+        egestas cursus. Mauris porttitor quis nisi ut tincidunt.
+        Curabitur adipiscing eleifend nibh. Praesent mauris leo,
+        consequat vitae orci eget, vestibulum bibendum nisi.
+        Aliquam tempus diam ut tortor cursus, eget sodales augue
+        adipiscing. Nulla at dignissim libero.
+      </div>
+  <div>
+    <div style="float: left;">woshiguchao</div>
+    <div></div>
+  </div>
+    <!--</div>-->
+  <!--</div>-->
+  <!--<span>wo shi guchao</span>
+  <div id="outer">
+    <div id="inner">some text. some text. some text.
+      <p>this is a paragragh.</p>
+    </div>
+  </div>-->
+  <!--<div style="width: 30px;height: 40px;border: 1px solid black;margin-left: 50px;position: relative">
+    <i style="position: absolute;width: 50px;height: 1px;background: black;transform:rotate(45deg)"></i>
+  </div>-->
+  <!--&lt;!&ndash;验证display：inline-block时不同div块的内容高度不一样时的差距(他们是会文本的最底部对齐的)&ndash;&gt;
+  <div>
+    <div class="biaoTou">
+    <div style="display: inline-block">
+      <p>woshiguchao</p>
+      <p>woshiguchao</p>
+      <p>woshiguchao</p>
+      <p>woshiguchao</p>
+      <p>woshiguchao</p>
+    </div>
+    <div style="display: inline-block">
+      <p>woshiguchaohahhhhhh</p>
+      <p>woshiguchaohahhhhhh</p>
+      <p>woshiguchaohahhhhhh</p>
+    </div>
+  </div>-->
+  <!--一个float后面是块元素还是行内元素是不一样的-->
+  <!--<div style="display: none">
+    <div style="width: 200px;height: 200px;float: left;background: red">hello</div>
+    <div style="width: 200px;height: 300px;background: yellow">world</div>
+  </div>
+  <div style="width: 1200px;margin: auto;text-align: center;display: none">
     <div>woshiguchao</div>
     <img style="width: 100px;height: 100px" src="./src/assets/deng.png">
     <div style="background-image: url('./src/assets/deng.png');width: 100px;height: 100px"></div>
   </div>
-  <div class="nav">
+  <div class="nav" style="display: none">
     <div class="hex-wrap clearfix hex-wrap1">
       <div class="hex-border-left hex-border-left1 pull-left">
         <div class="hex-left"></div>
@@ -357,7 +181,7 @@
         <div class="hex-right"></div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!--<nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">W3Cschool</a>
@@ -411,6 +235,8 @@
       <p class="navbar-text navbar-right">向右对齐-文本</p>
     </div>
   </nav>-->
+  <script>
+  </script>
 </div>
 </body>
 </html>

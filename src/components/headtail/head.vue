@@ -6,17 +6,17 @@
                  background-color="#475669" text-color="#ffffff" active-text-color="#409EFF">
           <img style="width: 145px;margin-top: 10px;float: left;outline:none;" src="./../../assets/logo_new.png" @click="logoto"/>
 
-          <el-dropdown class="selectLang" trigger="click">
+          <el-dropdown class="selectLang" trigger="click" @command="selectLanguage">
             <span class="el-dropdown-link">语言<i class="el-icon-arrow-down el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>简体中文</el-dropdown-item>
-              <el-dropdown-item>English</el-dropdown-item>
+              <el-dropdown-item command="zh">简体中文</el-dropdown-item>
+              <el-dropdown-item command="en">English</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-button size="small" class="login-btn" round>登录</el-button>
           <div class="selectclick">
-            <el-menu-item index="/ironore">铁矿石</el-menu-item>
-            <el-menu-item index="/2">煤炭</el-menu-item>
+            <el-menu-item index="/ironore">{{$t('global.iron')}}</el-menu-item>
+            <el-menu-item index="/2">{{$t('global.coal')}}</el-menu-item>
             <el-menu-item index="/3">原油</el-menu-item>
             <el-menu-item index="/4">大豆</el-menu-item>
             <el-menu-item index="/5">玉米</el-menu-item>
@@ -30,11 +30,24 @@
 export default {
   data () {
     return {
+      lang: ''
     }
   },
   mounted () {
   },
   methods: {
+    // 语言选择
+    selectLanguage (command) {
+      console.log('command', command)
+      var exdate = new Date()
+      exdate.setTime(exdate.getTime() + 24 * 3600 * 35600)
+      window.document.cookie = 'language=' + command + ';path=/;expires=' + exdate.toGMTString
+      //   this.$i18n.locale = command
+      //   window.language = command
+      //  this.$root.GOEVENT.$emit('SELECT_I18N', command)
+      // 页面刷新
+      window.location.reload()
+    },
     // 点击logo图片跳转到首页
     logoto () {
       this.$router.push('/index')

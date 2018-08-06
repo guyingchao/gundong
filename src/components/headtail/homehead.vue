@@ -3,10 +3,11 @@
     <div>
       <div class="content1">
         <i></i>
-        <div style="font-size: 24px;color: #666666;">{{titileString}}</div>
+        <div style="font-size: 24px;color: #666666;">{{$t(titileString)}}</div>
         <i></i>
       </div>
-      <div style="font-size: 16px;color: #E6E6E6;margin-top: 5px;margin-bottom: 70px">Iron Ore Data Service</div>
+      <div v-if="this.$i18n.locale === 'zh'" style="font-size: 16px;color: #E6E6E6;margin-top: 5px;margin-bottom: 40px">{{$t(titileString,'en')}}</div>
+      <div v-else style="font-size: 16px;color: #E6E6E6;margin-top: 5px;margin-bottom: 40px">{{$t(titileString,'zh')}}</div>
     </div>
 </template>
 
@@ -26,6 +27,8 @@ export default {
 <style lang="less" rel="stylesheet/less" scoped>
   .content1{
     position:relative;
+    width: 1200px;
+    margin: auto;
     i{
       width: 420px;
       height: 1px;
