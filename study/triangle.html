@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .tri{
+      width:0px;
+      height: 0px;
+      border: 20px solid;
+      /*border-color:#FF9600 #3366ff #12ad2a #f0eb7a;*/
+      border-color:#FF9600 transparent transparent transparent;
+    }
+    .tri1{
+      width:0;
+      height: 0px;
+      border: 20px solid;
+      border-width: 20px 20px 0 0;
+      /*border-color: #FF9600 transparent transparent transparent;*/
+    }
+    .shan{
+      width: 20px;
+      height: 20px;
+      border: 50px solid;
+      background-color: transparent;
+      border-color: red transparent transparent transparent;
+      border-radius: 50%;
+    }
+    .huihua{
+      width: 100px;
+      height: 100px;
+      border:1px solid gray;
+      border-radius: 10px;
+      position:relative;
+    }
+    .huihua:after{
+      position: absolute;
+      left: 100px;
+      top: 23px;
+      content: '';
+      width:0;
+      height: 0px;
+      border: 20px solid;
+      border-color: transparent transparent transparent red;
+    }
+  </style>
+</head>
+<body>
+<div class="tri"></div>
+<div class="tri1"></div>
+<div class="shan"></div>
+<!--实现会话泡框-->
+<div class="huihua"></div>
+</body>
+</html>

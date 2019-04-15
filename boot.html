@@ -4,14 +4,117 @@
   <meta charset="UTF-8">
   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!--<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
   <title>Title</title>
   <style>
     *{
       margin: 0;
       padding: 0;
     }
-    div#outer {width: 500px;}
+    .insert{
+      position: relative;
+      z-index:100;
+      background: green;
+      width:300px;
+      height:300px;
+      top:100px;
+    }
+    .parent{
+      /*position:relative;
+            z-index: 1000;*/
+      width:200px;
+      height:200px;
+      /*left:0;
+            top:-50px;*/
+      border:1px solid #eee;
+    }
+    .subbottom{
+      position:relative;
+      z-index: 50;
+      width:200px;
+      height:200px;
+      background: red;
+      top:-100px;
+      left:0;
+
+    }
+    .subtop{
+      position: relative;
+      z-index:1100;
+      width:100px;
+      height:100px;
+      left:0;
+      top:0;
+      background: blue;
+    }
+    .tooltips {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+
+    .tooltips .tooltipstext {
+      visibility: visible;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* 定位 */
+      position: absolute;
+      left: 50%;
+      margin-left: -60px;
+      bottom: 150%;
+      z-index: 1;
+    }
+
+    .tooltips:hover .tooltipstext {
+      visibility: visible;
+    }
+    .tooltips .tooltipstext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+    }
+    .woshi::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: yellow transparent transparent transparent;
+    }
+    /*.lxp{
+      width: 30px;
+      height: 30px;
+      background: red;
+      transform: rotate(45deg);
+      -ms-transform:rotate(45deg);
+      -moz-transform:rotate(45deg);
+      -webkit-transform:rotate(45deg);
+      -o-transform:rotate(45deg);
+    }*/
+    /*.di1{
+      width: 200px;
+      background: green;
+      padding: 10px;
+    }
+    .di2{
+      width: 100px;
+      height: 100px;
+      float: left;
+      background: red;
+    }*/
+    /*div#outer {width: 500px;}
     div#inner {text-indent: 10%;}
     p {width: 200px;}
 
@@ -23,14 +126,80 @@
     }
     .content::-webkit-scrollbar {
       display: none;
+    }*/
+    /*div > p{
+      color: red;
     }
+    h1 + p {
+      color: yellow;
+    }*/
   </style>
 </head>
 <body>
-<div>
-  <!--<div class="outer-container">-->
-    <!--<div class="inner-container">-->
-      <div class="content">
+<!--<div style="background-color: #e5edff;">
+  <img src="./gou.jpg" style="width: 60px;height: 60px;">
+  <span>zxx</span>
+</div>-->
+<!--z-index失效问题-->
+<div class="insert"></div>
+<div class="parent">
+  <div class="subtop"></div>
+  <div class="subbottom"></div>
+</div>
+<div style="width: 50px;white-space: nowrap;text-overflow: ellipsis;background-color: #ff6c00;color: white;overflow:hidden;">
+    woshiguchaowoshiguchaowoshiguchaojjjjjjjjjjj
+  </div>
+  <a>hello world</a>
+<div style="margin: 200px">
+  <div class="tooltips">鼠标移动到这
+    <span class="tooltipstext">提示文本提示文本提示</span>
+  </div>
+  <div style="margin: 60px;">
+    <!--after伪元素是属于他的class元素的孩子的，从定位可以看出来-->
+    <div style="width: 310px;">
+      <div style="float: left;">hello</div>
+      <div style="width: 200px;height: 200px;background: red;position: relative;">
+        <div style="position: absolute;background: green;width: 100px;height: 100px;"></div>
+        <div class="woshi">woshiguchao</div>
+        <!--<div style="width: 100px;height: 100px;position: absolute;background: yellow;">
+          <span>woshiguchaowoshiguchaowoshiguchaowoshiguchao</span>
+        </div>-->
+      </div>
+      <div style="float: right;">world</div>
+    </div>
+  </div>
+</div>
+<!--<div style="border: 1px solid red;">
+  &lt;!&ndash;<div style="display: inline-block;">hello</div>
+  <div style="display: inline-block;">world!</div>
+  <div style="float: right;">
+    <div>woshiguchao</div>
+    <div>beiyouuniversity</div>
+  </div>&ndash;&gt;
+  <img src="./gou.jpg" style="width: 60px;height: 60px;float: left;">
+  <p class="hang">hahhahhahhhhhhhhhh
+    hhhhhhhhhhhhhhhhhhhhhhhhhhhahhhhahhahhhhhhhhhhhhhh
+  haaaaaaaaaaaaaaaaaa</p>
+  &lt;!&ndash;<div class="lxp">jinlaile</div>
+  <div id="cityName"></div>&ndash;&gt;
+  &lt;!&ndash;<div style="width: 50px;">
+    <p>woshiguchao</p>
+    <div style="border: 1px solid yellow;">
+      <p>yashangqu</p>
+      <div style="width: 50px;height: 50px;background: red;float: left"></div>
+    </div>
+    <p>hhahhahhahhah</p>
+  </div>&ndash;&gt;
+  &lt;!&ndash;<div class="di1">
+    <div class="di2"></div>
+  </div>&ndash;&gt;
+  &lt;!&ndash;<h1>title</h1>
+  <p>woshiguchao</p>
+  <p>woshixiaochaozi</p>
+  <p>gagga</p>&ndash;&gt;
+  &lt;!&ndash;<div class="outer-container">&ndash;&gt;
+    &lt;!&ndash;<div class="inner-container">&ndash;&gt;
+      &lt;!&ndash;<div class="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Integer vehicula quam nibh, eu tristique tellus dignissim
         quis. Integer condimentum ultrices elit ut mattis.
@@ -65,19 +234,19 @@
   <div>
     <div style="float: left;">woshiguchao</div>
     <div></div>
-  </div>
-    <!--</div>-->
-  <!--</div>-->
-  <!--<span>wo shi guchao</span>
+  </div>&ndash;&gt;
+    &lt;!&ndash;</div>&ndash;&gt;
+  &lt;!&ndash;</div>&ndash;&gt;
+  &lt;!&ndash;<span>wo shi guchao</span>
   <div id="outer">
     <div id="inner">some text. some text. some text.
       <p>this is a paragragh.</p>
     </div>
-  </div>-->
-  <!--<div style="width: 30px;height: 40px;border: 1px solid black;margin-left: 50px;position: relative">
+  </div>&ndash;&gt;
+  &lt;!&ndash;<div style="width: 30px;height: 40px;border: 1px solid black;margin-left: 50px;position: relative">
     <i style="position: absolute;width: 50px;height: 1px;background: black;transform:rotate(45deg)"></i>
-  </div>-->
-  <!--&lt;!&ndash;验证display：inline-block时不同div块的内容高度不一样时的差距(他们是会文本的最底部对齐的)&ndash;&gt;
+  </div>&ndash;&gt;
+  &lt;!&ndash;&lt;!&ndash;验证display：inline-block时不同div块的内容高度不一样时的差距(他们是会文本的最底部对齐的)&ndash;&gt;
   <div>
     <div class="biaoTou">
     <div style="display: inline-block">
@@ -92,9 +261,9 @@
       <p>woshiguchaohahhhhhh</p>
       <p>woshiguchaohahhhhhh</p>
     </div>
-  </div>-->
-  <!--一个float后面是块元素还是行内元素是不一样的-->
-  <!--<div style="display: none">
+  </div>&ndash;&gt;
+  &lt;!&ndash;一个float后面是块元素还是行内元素是不一样的&ndash;&gt;
+  &lt;!&ndash;<div style="display: none">
     <div style="width: 200px;height: 200px;float: left;background: red">hello</div>
     <div style="width: 200px;height: 300px;background: yellow">world</div>
   </div>
@@ -181,8 +350,8 @@
         <div class="hex-right"></div>
       </div>
     </div>
-  </div>-->
-  <!--<nav class="navbar navbar-default" role="navigation">
+  </div>&ndash;&gt;
+  &lt;!&ndash;<nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">W3Cschool</a>
     </div>
@@ -234,9 +403,19 @@
       </form>
       <p class="navbar-text navbar-right">向右对齐-文本</p>
     </div>
-  </nav>-->
-  <script>
-  </script>
-</div>
+  </nav>&ndash;&gt;
+</div>-->
+<!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+<script>
+  /**
+   * 定位当前城市
+   */
+  /*$(document).ready(function(){
+    var areaCode = returnCitySN["cid"]; //地区编码
+    var thisIp =  returnCitySN["cip"];  //IP
+    var areaName = returnCitySN["cname"]; //只能获取到省
+    console.log('result',areaName)
+  })*/
+</script>
 </body>
 </html>

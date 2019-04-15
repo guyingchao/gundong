@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue生命周期学习</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.0/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--<component-a>
+    <template v-slot:up="slot1">
+      <li v-for="(item,index) in slot1.data">{{item}}</li>
+    </template>
+    <template v-slot:down="slot2">
+      <li>li1</li>
+      <li>li2</li>
+    </template>
+  </component-a>-->
+</div>
+</body>
+<script>
+
+  // 定义一个名为 button-counter 的新组件
+  /*Vue.component('button-counter', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  })*/
+  var componentA = {
+    data: function () {
+      return {
+        count: 0,
+        liData: ['li1','li2','li3']
+      }
+    },
+//    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    template: '<div>' +
+    '<slot name="up" :data="liData"></slot>' +
+      '<div><slot name="down"></slot></div>'+
+    '</div>'
+  }
+  var vm = new Vue({
+    el: '#app',
+    components: {'component-a':componentA},
+    data: {
+      ok:true,
+      val:true
+      // declare message with an empty value
+    },
+    methods: {
+      inpclick: function () {
+        this.ok = this.val;
+      }
+    }
+  })
+</script>
+</html>

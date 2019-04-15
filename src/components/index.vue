@@ -101,7 +101,7 @@
           </div>
         </div>
       </div>
-      <homehead :titileString="stringtitle"></homehead>
+      <!--<homehead :titileString="stringtitle"></homehead>-->
     </div>
 </template>
 

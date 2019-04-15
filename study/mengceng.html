@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .parent{
+        /*宽度和高度可以不写，因为蒙层会找html的宽度和高度*/
+        /*width: 100%;height: 100%;*/
+      }
+      .meng{
+        display: none;
+        /*absolute和fixed都可以*/
+        position:absolute;
+        /*position:fixed;*/
+        /*默认为其父元素（浏览器窗口）的宽度和高度*/
+        /*width: 100%;*/
+        /*height: 100%;*/
+        top:0;
+        bottom:0;
+        left:0;
+        right: 0;
+        z-index:99;
+        background-color: rgba(0,0,0,0.3);
+        animation: myfirst 3s;
+        -moz-animation: myfirst 3s;	/* Firefox */
+        -webkit-animation: myfirst 3s;	/* Safari 和 Chrome */
+        -o-animation: myfirst 3s;	/* Opera */
+      }
+      @keyframes myfirst {
+        0%   {top: 100%;}
+        100% {top: 0;}
+      }
+      .small{
+        background-color: yellow;width: 50px;height: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    </style>
+</head>
+<body>
+<div class="parent">
+  <div id="clickmeng">点击出现蒙层</div>
+  <div class="meng" id="men">
+    <div class="small"></div>
+  </div>
+</div>
+<script>
+  let id = document.getElementById('clickmeng')
+  id.addEventListener('click',function(){
+    document.getElementById('men').style.display='block'
+  })
+</script>
+
+</body>
+</html>

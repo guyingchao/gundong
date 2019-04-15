@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <style>
+    #loopDiv{
+      width: 790px;
+      height: 340px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #list{
+      list-style: none;
+      position: absolute;
+      bottom: 10px;
+      left: 305px;
+    }
+    #list li{
+      float: left;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 50%;
+      background: #aaa;
+      margin-right: 10px;
+    }
+    .chooseBut{
+      width: 50px;
+      height: 80px;
+      background-color: rgba(0,0,0,0.2);
+      color: #fff;
+      font-size: 30px;
+      line-height: 80px;
+      text-align: center;
+      display: none;
+    }
+    #left{
+      position: absolute;
+      left: 0px;
+      top: 130px;
+      background-color: rgba(0,0,0,0.2)
+    }
+    #left:hover{
+      background-color: rgba(0,0,0,0.6)
+    }
+    #right{
+      position: absolute;
+      right: 0px;
+      top: 130px;
+    }
+    .imgstyle{
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      margin:auto;
+    }
+  </style>
+</head>
+<body>
+<!--这是一个非常好的实现轮播图的实例-->
+<div id="loopDiv">
+  <img class="imgstyle" id="pic" src="../imgs/0.png"/>
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <div id="left" class="chooseBut"><</div>
+  <div id="right" class="chooseBut">></div>
+</div>
+<script type="text/javascript">
+  var jsDivBox = document.getElementById("loopDiv");
+  //图片节点
+  var jsImg = document.getElementById("pic");
+  //左右按钮节点
+  var jsLeft = document.getElementById("left");
+  var jsRight = document.getElementById("right");
+  //获取所有的li
+//  var jsUl = document.getElementById("list");//多余
+  var jsLis = document.getElementsByTagName("li");
+  //让第一个小圆点变为红色
+  jsLis[0].style.backgroundColor = "red";
+
+  //显示当前的图片下标
+  var currentPage = 0;
+
+  //启动定时器
+  var timer = setInterval(func, 1000);
+  function func() {
+    currentPage++;
+    changePic();
+  }
+  function changePic() {
+    if (currentPage == 3) {
+      currentPage = 0;
+    }
+    if (currentPage == -1) {
+      currentPage = 2;
+    }
+    //更换图片
+    //"img/1.jpg"
+    jsImg.src = "../imgs/" + currentPage + ".png";
+    //将所有的小圆点颜色清空
+    for (var i = 0; i < jsLis.length; i++) {
+      jsLis[i].style.backgroundColor = "#aaa";
+    }
+    //改变对应小圆点为红色
+    jsLis[currentPage].style.backgroundColor = "red";
+  }
+
+  //鼠标进入
+  jsDivBox.addEventListener("mouseover", func1, false);
+  function func1() {
+    //停止定时器
+    clearInterval(timer);
+    //显示左右按钮
+    jsLeft.style.display = "block";
+    jsRight.style.display = "block";
+  }
+  //鼠标移出
+  jsDivBox.addEventListener("mouseout", func2, false);
+  function func2() {
+    //重启定时器
+    timer = setInterval(func, 1000);
+
+    //隐藏左右按钮
+    jsLeft.style.display = "none";
+    jsRight.style.display = "none";
+  }
+
+  //点击左右按钮
+  jsLeft.addEventListener("click", func3, false);
+  function func3() {
+    currentPage--;
+    changePic();
+  }
+  jsLeft.onmouseover = function() {
+//    this.style.backgroundColor = "rgba(0,0,0,0.6)";
+  }
+  jsLeft.onmouseout = function() {
+//    this.style.backgroundColor = "rgba(0,0,0,0.2)";
+  }
+  jsRight.addEventListener("click", func, false);
+  jsRight.onmouseover = function() {
+    this.style.backgroundColor = "rgba(0,0,0,0.6)";
+  }
+  jsRight.onmouseout = function() {
+    this.style.backgroundColor = "rgba(0,0,0,0.2)";
+  }
+
+  //进入小圆点(这个和我看的那个var会把j变成全局的变量一致)
+  for (let j = 0; j < jsLis.length; j++) {
+    jsLis[j].onmouseover = function() {
+        currentPage = j
+//      currentPage = parseInt(this.innerHTML) - 1;
+      changePic();
+    };
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .child{
+      margin: 0 20px;
+      background-color: yellow;
+      height: 0px;
+      padding-bottom: 50%;
+    }
+    .flex-parent{
+      width:30%;
+      height: 200px;
+      display: flex;
+      flex-direction:row;
+      align-items: stretch;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .flex-parent > div{
+      width:50px;
+      height: 50px;
+      background-color: red;
+    }
+    .imgs{
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <img class="imgs" id="img">
+</div>
+<div class="flex-parent">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<div style="width: 300px;height: 300px;">
+  <div class="child"></div>
+</div>
+<p class="p1">p1</p>
+<p class="p2">p2</p>
+<p class="p3">p3</p>
+<div class="clickBox">1</div>
+<div class="clickBox">2</div>
+<div class="clickBox">3</div>
+<script>
+  //实现每5秒换一张图片
+  /*function setSeconds(){
+    var imgs = ['./imgs/城市公共交通.png','./imgs/城市道路.png','./imgs/小客车摇号.png']
+    var id = document.getElementById('img')
+    var timer = null
+    var ii = 0
+    clearInterval(timer)
+    timer = setInterval(function(){
+      if(ii%3===0){
+        ii = 0
+      }
+      id.src = imgs[ii]
+      ii++
+    },2000)
+  }
+  setSeconds()*/
+
+  function lianFoo(name){
+    this.name = name
+  }
+  lianFoo.prototype.printName = function () {
+    console.log('name1',this.name)
+  }
+  var newfoo = new lianFoo('guzhao')
+  newfoo.alername = function () {
+    console.log('name2',this.name)
+  }
+  newfoo.alername()
+  newfoo.printName()
+  console.log('result::',newfoo instanceof Object)
+  var p = document.getElementsByTagName('p')[0]
+  console.log(p.nodeName)
+  function setCookie(cname,cvalue,exdays)
+  {
+    var d = new Date();
+    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    var expires = "max-age="+3;
+    //document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = 'name=guchao';
+    document.cookie = 'age=24';
+    document.cookie = 'luck=yes';
+  }
+  setCookie()
+  function getCookie() {
+    console.log(document.cookie)
+  }
+  //getCookie()
+  function parseCookie() {
+    var cookie = document.cookie,
+      pattern = /([^=]+)=([^;]+);?\s*/g,
+      result,
+      value = {};
+    while((result = pattern.exec(cookie)) !== null) {
+        //console.log('result::;',result)
+      value[result[1]] = result[2];
+    }
+    console.log(value)
+    return value;
+  }
+  parseCookie()
+
+  var name = "The Window";
+  var object = {
+    name : "My Object",
+    getNameFunc : function(){
+      var self = this
+      return function(){
+        console.log('this',this===window)
+        return self.name;
+      };
+    }
+  };
+  function iteratorFactory(i){
+    var onclick = function(e){
+      console.log(i)
+    }
+    return onclick;
+  }
+  var clickBoxs = document.querySelectorAll('.clickBox')
+  for (var i = 0; i < clickBoxs.length; i++){
+    clickBoxs[i].onclick = iteratorFactory(i)
+  }
+  let cat = 'ken'
+  let dog = 'lili'
+  let zoo = {cat, dog}
+//  console.log(zoo)
+  function animals(...types){
+    console.log(types)
+  }
+//  animals('cat', 'dog', 'fish')
+  function aninal2() {
+    console.log(arguments)
+  }
+  aninal2('cat', 'dog', 'fish')
+</script>
+</body>
+</html>

@@ -2728,6 +2728,11 @@ var a = {port:{
     "40554": "Beilun",
     "45025": "Bayuquan",
     'ALL': 'ALL Port',
-    'other': 'Other'
+    'other': 'Other',
+    "AUS":"Australia",
+    "BRA":"Brazil",
+    "CHNNOR": "North",
+    "CHNSOU": "south",
+    "CHNCJR": "cj"
 }}
 export default a

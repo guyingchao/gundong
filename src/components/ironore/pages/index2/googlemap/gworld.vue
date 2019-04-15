@@ -1,7 +1,7 @@
-<!--Created by win10 on 2018/7/13.-->
+<!--Created by win10 on 2018/10/28.-->
 <template>
-    <div>
-      <p>woshiguchao</p>
+    <div style="height: 400px;">hello google
+
     </div>
 </template>
 

@@ -9,7 +9,8 @@ const en = {
     south: 'South China',
     cj: 'China Yangtse Region',
     ironhang: 'China Import Iron Ore CIF',
-    boat: 'Ship Dynamics'
+    boat: 'Ship Dynamics',
+    imex: 'Forecast'
   },
   country:{
     "ABW": "Aruba",
@@ -259,7 +260,41 @@ const en = {
     "ZWE": "Zimbabwe"
   },
   forecast: {
-    imchina: 'Chinese Imports'
+    imchina: 'Chinese Imports',
+    exchina: 'Exported To China'
+  },
+  indexTip: {
+    supply1: 'GIOIS\'s Meaning',
+    supply2: 'GIOIS indicates whether there is enough iron ore import in the future.GIOIS only targets the following products: PB powder, Mac powder, Newman powder, Jinbuba powder, card powder and southern Brazil powder at present.',
+    supply3: 'Release time: 4 pm every day.',
+    supply4: 'Characteristics',
+    supply5: 'In theory, the GIOIS supply index fluctuates between 0 and 100, and in reality the index fluctuates between 45 and 70.',
+    supply6: 'Index value = 50: the amount of such products imported in the next 14 days is too unchanged.',
+    supply7: 'Index value < 50: the imports of such products will decrease in the next 14 days compared to the past. In particular, when the index is 0, it means that no such products are imported in the next 14 days.',
+    supply8: 'Index value > 50: the import of such products will increase in the next 14 days compared to the past. In particular, when the index is 100, it means that no such products have been imported in the past 14 days.',
+    button: 'View full index introduction'
+  },
+  about: {
+    aboutgo: 'About Go-Go Trade',
+    contact: 'Contact Us'
+  },
+  ironfa: {
+    irodetail: 'Iron ore delivery details',
+    baxi: 'BRA',
+    aoda: 'AUS',
+    danwei: 'kmt',
+    past7: 'Shipped in the past 7 days',
+    past14: 'Shipped in the past 14 days',
+    product: 'Product',
+    zd: 'Ups and downs',
+    qu: 'Trend',
+    port: 'Port',
+    faqu: 'Shipment trend',
+    past7name: 'Last 7 days',
+    past14name: 'Last 14 days',
+    load: 'Loading',
+    nodata: 'No data'
   }
 }
+
 export default en

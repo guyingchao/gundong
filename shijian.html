@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./zepto.js"></script>
+    <script src="http://218.67.246.252:18001/sjzx/api/gsgl/highwayAnnualReportInfo/get?callback=dosomething"></script>
+  <style>
+  </style>
+</head>
+<body>
+<div id="div1">
+  <div style="width: 100px;height: 100px;background-color: yellow;">guchao</div>
+  <img width="48" height="48" class="pfs" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2865516966,4134317494&fm=27&gp=0.jpg">
+  <!--<img src="./gou.jpg"/>-->
+  <a href="#">a1</a>
+  <a href="#">a2</a>
+  <a href="#">a3</a>
+  <a href="#">a4</a>
+  <a href="#">a5</a>
+</div>
+</body>
+<script>
+  function throttle (fn, time) {
+    var canRun = true;
+    return function () {
+      if (!canRun) return false;
+      canRun = false;
+      var that = this, args = arguments;
+      setTimeout(function () {
+        fn.apply(that, args);
+        canRun = true;
+      }, time || 500);
+    }
+  }
+  setInterval(throttle(function() {
+    console.log("hello world")
+  }), 100)
+
+  console.log('start')
+  var img = document.createElement('img')
+  img.onload=function () {
+    console.log('loaded')
+  }
+  img.src = 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2865516966,4134317494&fm=27&gp=0.jpg'
+  console.log('end')
+  function first() {
+    var _list = []
+    return function (val) {
+      if(_list.indexOf(val)===-1){
+        _list.push(val)
+        return true
+      } else {
+          return false
+      }
+    }
+  }
+  var ff = first()
+  console.log(ff(9))
+  console.log(ff(9))
+  console.log(ff(10))
+  var aahuya='window'
+  var aaahuya = {
+    'aahuya': 'huya',
+    a1:function () {
+      setTimeout(function () {
+        console.log('111',this.aahuya)
+      },1)
+    },
+    a2:function (){
+      setTimeout(()=>{
+        console.log('222',this.aahuya)
+      },1)
+    },
+    a3(){
+      setTimeout(function () {
+        console.log('333',this.aahuya)
+      },1)
+    },
+    a4(){
+      setTimeout(()=>{
+        console.log('444',this.aahuya)
+      },1)
+    }
+  }
+  aaahuya.a1()
+  aaahuya.a2()
+  aaahuya.a3()
+  aaahuya.a4()
+  console.log(null==undefined)
+  //代理问题
+  var ele = document.getElementById('div1')
+  bindEven(ele,'click','a',function (e) {
+    console.log(this.innerHTML)
+  })
+  function bindEven(ele,type,selector,fn) {
+    if(fn === null){
+      fn = selector
+      selector = null
+    }
+    ele.addEventListener(type,function (e) {
+      var target
+      if(selector){
+        //有代理
+        target = e.target
+        console.log('target',target)
+        if(target.matches(selector)){
+         fn.call(target)
+        }
+      } else {
+        //无代理
+        fn(e)
+      }
+    })
+  }
+  function dosomething(jsonpdata) {
+    console.log(jsonpdata)
+  }
+  //基本的ajax
+  var xhr = new XMLHttpRequest()
+  xhr.open('get','http://218.67.246.252:18001/sjzx/api/gsgl/highwayAnnualReportInfo/get',false)
+  xhr.onreadystatechange = function () {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        console.log(xhr.responseText)
+      }
+    }
+  }
+  xhr.send(null)
+</script>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<!--<div class="box">
+  <input type="text" id="textInput">
+  输入：<span id="textSpan"></span>
+</div>-->
+<div id="app">
+  <input type="text" v-model="text"/>
+  {{ text }}
+</div>
+<script>
+  function compile(node,vm) {
+    var reg = /\{\{(.*)\}\}/;
+    //节点类型为元素
+    if(node.nodeType === 1){
+       var attr = node.attributes;
+       for(let i = 0; i < attr.length; i++){
+           if(attr[i].nodeName == 'v-model'){
+             var name = attr[i].nodeValue
+             node.addEventListener('input',function (e) {
+               vm[name] = e.target.value
+             })
+             node.value = vm[name]
+             node.removeAttribute('v-model')
+           }
+       }
+    }
+    //节点类型为text
+    if(node.nodeType === 3){
+      if(reg.test(node.nodeValue)){
+        var name = RegExp.$1
+        name = name.trim()
+        //node.nodeValue = vm[name]
+        new Watcher(vm,node,name)
+      }
+    }
+  }
+
+  function Watcher(vm,node,name) {
+    Dep.target = this
+    this.name = name
+    this.node = node
+    this.vm = vm
+    this.update()
+    Dep.target = null
+  }
+  Watcher.prototype = {
+    update:function () {
+      this.get()
+      this.node.nodeValue = this.value
+    },
+    get:function () {
+      this.value = this.vm[this.name]
+    }
+  }
+  function nodeToFragment(node,vm) {
+    var flag = document.createDocumentFragment();
+    var child;
+    //console.log('node.:::',node.firstChild)
+    while (child = node.firstChild) {
+      compile(child,vm)
+      flag.appendChild(child);
+    }
+    return flag;
+  }
+  function Vue(options) {
+    this.data = options.data
+    var data = this.data
+    observer(data,this)
+    let id = options.el
+    let dom = nodeToFragment(document.getElementById(id),this)
+    document.getElementById(id).appendChild(dom)
+  }
+  function observer(obj,vm) {
+    Object.keys(obj).forEach(function (key) {
+      definedReactive(vm,key,obj[key])
+      console.log(vm.data)
+    })
+  }
+  function definedReactive(obj,key,val) {
+    var dep = new Dep()
+    Object.defineProperty(obj,key,{
+      get:function () {
+        //添加订阅者watcher到主体对象Dep
+        if(Dep.target){
+          dep.addSub(Dep.target)
+        }
+        return val
+      },
+      set:function (newval) {
+        if(newval === val){
+          return
+        }
+        val = newval
+        //console.log(val)
+        //作为发布者发出通知
+        dep.notify()
+      }
+    })
+  }
+  function Dep() {
+    this.subs = []
+  }
+  Dep.prototype = {
+    addSub:function (sub) {
+      this.subs.push(sub)
+    },
+    notify:function () {
+      this.subs.forEach(function (sub) {
+        sub.update()
+      })
+    }
+  }
+  var vm = new Vue({
+    el: 'app',
+    data: {
+      text: 'hello world'
+    }
+  });
+</script>
+<!--<script>
+  var obj = {}
+  let inputtext = document.querySelector('#textInput')
+  let textSpan = document.querySelector('#textSpan');
+  Object.defineProperty(obj,'foo',{
+      set:function (newvalue) {
+        inputtext.value = newvalue
+        textSpan.innerHTML = newvalue
+      }
+  })
+  inputtext.addEventListener('keyup',function (e) {
+    obj.foo = e.target.value
+  })
+</script>-->
+</body>
+</html>

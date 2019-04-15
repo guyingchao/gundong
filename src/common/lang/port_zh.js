@@ -2729,5 +2729,10 @@ var a = {port:{
     "45025": "鲅鱼圈",
     'ALL': '全部',
     'other': '其他',
+    'AUS': '澳大利亚',
+    'BRA': '巴西',
+    "CHNNOR": "北方",
+    "CHNSOU": "南方",
+    "CHNCJR": "长江口岸"
 }}
 export default a

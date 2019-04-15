@@ -21,6 +21,19 @@ import port_enGOGO from './common/lang/port_en.js'
 import country_zhGOGO from './common/lang/country_zh.js'
 import country_enGOGO from './common/lang/country_en.js'
 import mock from './mock'
+import echarts from 'echarts' //引入echarts
+import Vuex from 'vuex'
+import store from './vuex/store'
+import md5 from 'js-md5'
+import HappyScroll from 'vue-happy-scroll'
+import 'vue-happy-scroll/docs/happy-scroll.css'// 引入css
+import filters from './filters'
+
+Vue.use(HappyScroll)
+
+Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
+
+Vue.use(Vuex)
 
 Vue.use(mock)
 Vue.use(cookies)
@@ -30,10 +43,12 @@ Vue.use(VueMonent, {moment})
 window.GO_UTIL = GO_UTIL
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios // ajax请求
+Vue.prototype.$echarts = echarts //引入组件
+Vue.prototype.$md5 = md5 //引入MD5加密
 
 const getLanguageCookie = function () {
   var language = 'zh'
-  console.log('document.cookie', document.cookie)
+  // console.log('document.cookie', document.cookie)
   if (document.cookie.length > 0) {
     var arr = document.cookie.split('; ')
     for (var i = 0; i < arr.length; i++) {
@@ -64,6 +79,7 @@ var GOEVENT = new Vue()
 window.GOEVENT = GOEVENT
 new Vue({
   el: '#app',
+  store,
   i18n,
   router,
   components: { App },

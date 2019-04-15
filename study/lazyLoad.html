@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .img {
+      width: 200px;
+      height:280px;
+      background-color: gray;
+    }
+    .pic {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+  <div class="img">
+    <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
+  </div>
+</div>
+<script>
+  window.onload = function () {
+    lazyLoad()
+  }
+  //获取所有图片
+  const imgs = document.getElementsByTagName('img')
+  //获取可视区域的高度
+  const viewHeight = window.innerHeight||document.documentElement.clientHeight
+  //用于记录当前显示到了那一张图片，避免每次都从第一张开始
+  let num = 0
+  function lazyLoad() {
+    for(let i = 0; i < imgs.length; i++){
+      //可视区域的高度减去元素距离可视区域的顶部的高度
+      let distance = viewHeight - imgs[i].getBoundingClientRect().top
+      if(distance>=0){
+        imgs[i].src = imgs[i].getAttribute('data-src')
+        num = i+1
+      }
+    }
+  }
+
+  //节流函数(持续触发事件时，throttle会合并一定时间内的事件，并在该时间结束时真正去触发一次事件)
+  function throttle(fn,delay) {
+    let timeout;
+    return function(){
+      let context = this;
+      let args = arguments
+      if(!timeout){
+        timeout = setTimeout(() => {
+          timeout = null;
+          fn.apply(context,args);
+        },delay)
+      }
+    }
+  }
+
+  //防抖函数(当持续触发事件时，debounce 会合并事件且不会去触发事件，
+  //当一定时间内没有触发再这个事件时，才真正去触发事件。)
+  function debounce(fn, delay) {
+    // 持久化一个定时器 timer
+    let timer = null;
+    // 闭包函数可以访问 timer
+    return function() {
+      // 通过 'this' 和 'arguments'
+      // 获得函数的作用域和参数
+      let context = this;
+      let args = arguments;
+      // 如果事件被触发，清除 timer 并重新开始计时
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(function() {
+        fn.apply(context, args);
+      }, delay);
+    }
+  }
+  let better_scroll = throttle(lazyLoad,1000)
+  window.addEventListener('scroll',better_scroll)
+</script>
+</body>
+</html>

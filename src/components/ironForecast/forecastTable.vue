@@ -42,6 +42,10 @@ export default {
     foreData: {
       type: Array,
       required: true
+    },
+    typetable: {
+      type: String,
+      required: true
     }
   },
   data () {
@@ -67,6 +71,12 @@ export default {
   methods: {
     // 自定义表头结构
     renderHeader(createElement, { column, $index }){
+        /*let des = ''
+        if(this.typetable === 'im'){
+            des = '到港'
+        }else{
+        des = '开始装货'
+        }*/
       return createElement(
         'span', [
           createElement('span', this.timtarr[$index-2].begin),
@@ -78,7 +88,7 @@ export default {
             }
             }, [
               createElement('div',[
-                createElement('div', {'class': 'buju'},[this.timtarr[$index-2].begin + '-' + this.timtarr[$index-2].end]),
+                createElement('div', {'class': 'buju'},[this.timtarr[$index-2].begin + '-' + this.timtarr[$index-2].end + (this.typetable === 'im' ? '到港' : '开始装货')]),
                 createElement('div', '吨位依据船舶载量吨位进行预测，不考虑货物冗余情况。'),
               ]),
               createElement('span', {'class': 'el-icon-question', 'slot': "reference"})
@@ -139,12 +149,17 @@ export default {
     clickitem (row, column, cell, event){
       console.log('jinlaihahhahha',row,column,cell)
       console.log('moment',this.timearr2[0].begin)
-      let type = 'import'
       let beginDate = ''
       let endDate = ''
       let regionCode = ''
       let harbor = ''
-      if (row.regionCode === 'CHN') {
+      let type = ''
+      if(this.typetable === 'im'){
+        type = 'import'
+      }else{
+        type = 'export'
+      }
+      if (row.regionCode === 'CHN' || row.regionCode === 'GLOBAL') {
         regionCode = 'ALL'
       } else {
         regionCode = row.regionCode
