@@ -2810,4 +2810,41 @@ function canshu(){
   console.log(Array.prototype.slice.apply(arguments))
 }
 // canshu(1,22,3)
-console.log(+new Date(),new Date().getTime())
+// console.log(+new Date(),new Date().getTime())
+function curry (fn, arr = []) {
+  console.log('fn.length',fn.length)
+  return fn.length === arr.length ? fn.apply(null, arr) : function (...args) {
+    return curry (fn, arr.concat(args))
+  }
+}
+var testcurry = function (a,b,c){
+  return a+b+c
+}
+// console.log(curry(testcurry)(1)(2)(3))
+// console.log(Object.prototype.toString.call(null))
+//   [3,4,5,1,2]
+function lookforsmall(arr){
+  return arr.reduce((pre,cur,index)=>{
+    return pre>cur?cur:pre
+  })
+}
+// console.log('small',lookforsmall([3,4,5,1,2]))
+// console.log([1,2,3,4,4].slice(1,3))
+var currentNow = new Date()
+var yearcur = currentNow.getFullYear()
+var monthcur = currentNow.getMonth()
+var daycur = currentNow.getDate()
+// console.log(yearcur+'-'+(monthcur+1)+'-'+daycur)
+function fibonacci(n){
+  var pre = 1
+  var prepre = 1
+  var result = 1
+  if(n===1) return 1
+  for(let i = 2;i<=n;i++){
+    result = pre+prepre
+    prepre = pre
+    pre = result
+  }
+  return result
+}
+console.log(fibonacci(5))

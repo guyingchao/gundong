@@ -40,4 +40,10 @@ a.push(1,2)
 a.shift(3,4)
 a.concat([5,6])
 a.splice(0,1,2)
-console.log(a,a.length)//1
+// console.log(a,a.length)//1
+var tmp = 123
+if(true){
+  tmp = 'abc'
+  console.log(tmp)
+  let tmp;
+}

@@ -29,9 +29,48 @@
       height: 100px;
       background-color: green;
     }
+    .left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      background-color: #f00;
+    }
+    .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      background-color: #00f;
+    }
+    .main {
+      position: absolute;
+      top: 0;
+      left: 100px;
+      right: 200px;
+      background-color: #0f0;
+    }
+    .container:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
   </style>
 </head>
 <body>
+<div class="container">
+  <div class="main">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore sapiente adipisci ullam quo dolor recusandae modi, iste quidem non reiciendis minus quia numquam aliquid. Vitae dolores dignissimos laboriosam nobis cupiditate!</div>
+  <div class="left">左侧栏</div>
+  <div class="right">右侧栏</div>
+</div>
+<div style="display: flex">
+  <div style="flex-basis: 300px;background-color: yellow;"></div>
+  <div></div>
+</div>
+<span>guchao</span>
+<div style="background-color: red;width: 200px;height: 200px;line-height: 200px;">
+  <div style="width: 50px;height: 50px;background-color: yellow">guchao</div>
+</div>
 <div>
   <img class="imgs" id="img">
 </div>

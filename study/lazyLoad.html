@@ -59,7 +59,7 @@
   //用于记录当前显示到了那一张图片，避免每次都从第一张开始
   let num = 0
   function lazyLoad() {
-    for(let i = 0; i < imgs.length; i++){
+    for(let i = num; i < imgs.length; i++){
       //可视区域的高度减去元素距离可视区域的顶部的高度
       let distance = viewHeight - imgs[i].getBoundingClientRect().top
       if(distance>=0){
