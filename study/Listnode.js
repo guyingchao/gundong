@@ -162,7 +162,6 @@ function FindFirstCommonNode(pHead1, pHead2)
     return null
   }
   var long,short
-  var head2 = pHead2
   var len1 = getLength(pHead1)
   var len2 = getLength(pHead2)
   var dis = len1-len2
@@ -201,5 +200,19 @@ heads1.next.next.next = heads3
 heads2.next.next = heads3
 // console.log(FindFirstCommonNode(heads1,heads2))
 
-
+//斐波那契数列的非递归算法
+function fibonacci(n){
+  var pre = 1
+  var prepre = 0
+  var result = 1
+  if(n===0) return 0
+  if(n===1) return 1
+  for(let i = 2;i<=n;i++){
+    result = pre+prepre
+    prepre = pre
+    pre = result
+  }
+  return result
+}
+// console.log(fibonacci(5))
 

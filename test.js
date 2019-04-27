@@ -2835,16 +2835,4 @@ var yearcur = currentNow.getFullYear()
 var monthcur = currentNow.getMonth()
 var daycur = currentNow.getDate()
 // console.log(yearcur+'-'+(monthcur+1)+'-'+daycur)
-function fibonacci(n){
-  var pre = 1
-  var prepre = 1
-  var result = 1
-  if(n===1) return 1
-  for(let i = 2;i<=n;i++){
-    result = pre+prepre
-    prepre = pre
-    pre = result
-  }
-  return result
-}
-console.log(fibonacci(5))
+

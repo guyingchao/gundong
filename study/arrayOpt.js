@@ -3,7 +3,7 @@
  */
 // 数组去重的方法 去除数组中重复的成员
 //方法一set
-//console.log('ok',[...new Set([1,2,3,4,4])])
+// console.log('ok',[...new Set([1,2,3,4,4])])
 //方法二filter
 var source_arr = ['a', 'b', 'a', 'c', 'a', 'd', '1',1,'1'];
 var array_unique = source_arr.filter(function (element, index, array) {
