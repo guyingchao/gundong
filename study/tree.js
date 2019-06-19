@@ -97,6 +97,7 @@ tree.insertNode(8)
 // };
 
 //方法2：非递归
+// 2.1
 // function preorderTraversal (root) {
 //     let stack = []
 //     let currentNode = null
@@ -118,9 +119,55 @@ tree.insertNode(8)
 //     }
 //     return res
 // }
+//2.2(这是一个通用的非递归算法。中序遍历和后续都可以通过他稍微改一下实现)
+/**
+ * 对于二叉树中的任何一个节点而言，它都有两个角色需要扮演，一个是作为值存储的角色（角色1），另一个角色是作为它所带领的子树的一个代表（角色2）。
+ * 而我们设置的bool变量，就是为了说明我当前拿到的这个节点，应该是以一个值存储的这种角色对待它(True)，还是应该以一个子树的代表这种角色对待它（False），
+ * 如果是前者，那么就简单的将其所存储的值打印出来，如果是后者，我们需要继续探索由它带领的子树。
+ */
+// function preorderTraversal (root) {
+//     if (!root) return []
+//         let st=[{key:root,value:false}]
+//         let res=[]
+//         while (st.length){
+//             let cur = st.pop()
+//             if(cur.value){
+//                 res.push(cur.key.val)
+//             } else {
+//                 if(cur.key.rightChild){
+//                     st.push({key:cur.key.rightChild,value:false})
+//                 }
+//                 if(cur.key.leftChild){
+//                     st.push({key:cur.key.leftChild,value:false})
+//                 }
+//                 st.push({key:cur.key,value:true})//改变这句话的位置
+//             }
+//         }
+//     return res
+// }
+
+//前序非递归（和中序遍历一样）
+function preorderTraversal (root) {
+    var result=[];
+    var stack=[];
+    while(stack.length||root){
+            if(root){
+                stack.push(root);
+                result.push(root.val);
+                root = root.leftChild
+            }else{
+                root=stack.pop();
+                root = root.rightChild;
+            }
+        }
+    return result;
+}
 
 // 中序遍历
 // 1.递归
+/**
+ * 这个是递归通用的方法
+ */
 // var inorderTraversal = function(root) {
 //     var list = [];
 //     if(root){
@@ -184,33 +231,33 @@ tree.insertNode(8)
 // };
 
 // 2.非递归
-var postorderTraversal = function(root) {
-    let res = []
-    let stack = []
+// var postorderTraversal = function(root) {
+//     let res = []
+//     let stack = []
   
-    if (!root) {
-      return []
-    }
+//     if (!root) {
+//       return []
+//     }
   
-    stack.push(root)
-    while (stack.length) {
-      let tmp = stack.pop()
-      if (!tmp.leftChild && !tmp.rightChild) {
-        res.push(tmp.val)
-        continue
-      }
-      stack.push(tmp)
-      if (tmp.rightChild) {
-        stack.push(tmp.rightChild)
-        tmp.rightChild = null
-      }
-      if (tmp.leftChild) {
-        stack.push(tmp.leftChild)
-        tmp.leftChild = null
-      }
-    }
-    return res
-  };
+//     stack.push(root)
+//     while (stack.length) {
+//       let tmp = stack.pop()
+//       if (!tmp.leftChild && !tmp.rightChild) {
+//         res.push(tmp.val)
+//         continue
+//       }
+//       stack.push(tmp)
+//       if (tmp.rightChild) {
+//         stack.push(tmp.rightChild)
+//         tmp.rightChild = null
+//       }
+//       if (tmp.leftChild) {
+//         stack.push(tmp.leftChild)
+//         tmp.leftChild = null
+//       }
+//     }
+//     return res
+//   };
 
 
-console.log(postorderTraversal(tree.root))
+console.log(preorderTraversal(tree.root))
