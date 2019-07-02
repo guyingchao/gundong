@@ -2,420 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-  <!--<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
   <title>Title</title>
   <style>
     *{
       margin: 0;
       padding: 0;
     }
-    .insert{
-      position: relative;
-      z-index:100;
-      background: green;
-      width:300px;
-      height:300px;
-      top:100px;
+    .aside{
+    float: left;
+    margin-right: -200px;
+    width: 200px;
+    background-color: red;
+}
+.content{
+    float: right;
+}
+.content .inner{
+    margin-left: 200px;
+    background-color: blue;
+}
+.wrap{background-color: #f00;width: 800px;margin: 100px auto 0; height: 300px;font-size: 30px;}
+            /* .box{background-color: #007AFF;margin-left: -100px;height: 200px;} */
+            .box{background-color: #007AFF;margin-bottom: -100px;height: 200px;}
+            .t{background-color: #f00;height: 20px;width: 200px;}
+            .container{
+                margin: 100px auto 0;
+                border: 1px solid #000;
+                width: 300px;
+            }
+            .clearfix::after{
+                display: block;
+                content: "";
+                height: 0;
+                font-size: 0;
+                clear: both;
+            }
+            .clearfix{
+                zoom: 1;
+            }
+            .flb{
+                float: left;
+                width: 100px;
+                height: 100px;
+                margin-left:-25px;
+                /*margin-left: -25px;*/
+            }
+            .flbox1{background-color: rgba(33, 114, 214, 0.8);}
+            .flbox2{background-color: rgba(255, 82, 0, 0.8);}
+            .flbox3{background-color: rgba(90, 243, 151, 0.8);}
+            ul.table{
+        border:1px #ccc solid;
+        margin-top:100px;
     }
-    .parent{
-      /*position:relative;
-            z-index: 1000;*/
-      width:200px;
-      height:200px;
-      /*left:0;
-            top:-50px;*/
-      border:1px solid #eee;
+    ul.table li{
+        border-bottom: 1px #ccc solid;
+        list-style: none;
     }
-    .subbottom{
-      position:relative;
-      z-index: 50;
-      width:200px;
-      height:200px;
-      background: red;
-      top:-100px;
-      left:0;
-
-    }
-    .subtop{
-      position: relative;
-      z-index:1100;
-      width:100px;
-      height:100px;
-      left:0;
-      top:0;
-      background: blue;
-    }
-    .tooltips {
-      position: relative;
-      display: inline-block;
-      border-bottom: 1px dotted black;
-    }
-
-    .tooltips .tooltipstext {
-      visibility: visible;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 0;
-
-      /* 定位 */
-      position: absolute;
-      left: 50%;
-      margin-left: -60px;
-      bottom: 150%;
-      z-index: 1;
-    }
-
-    .tooltips:hover .tooltipstext {
-      visibility: visible;
-    }
-    .tooltips .tooltipstext::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: black transparent transparent transparent;
-    }
-    .woshi::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: yellow transparent transparent transparent;
-    }
-    /*.lxp{
-      width: 30px;
-      height: 30px;
-      background: red;
-      transform: rotate(45deg);
-      -ms-transform:rotate(45deg);
-      -moz-transform:rotate(45deg);
-      -webkit-transform:rotate(45deg);
-      -o-transform:rotate(45deg);
-    }*/
-    /*.di1{
-      width: 200px;
-      background: green;
-      padding: 10px;
-    }
-    .di2{
-      width: 100px;
-      height: 100px;
-      float: left;
-      background: red;
-    }*/
-    /*div#outer {width: 500px;}
-    div#inner {text-indent: 10%;}
-    p {width: 200px;}
-
-    .content{
-      width: 200px;
-      height: 200px;
-      overflow-x: scroll;
-      overflow-y: scroll;
-    }
-    .content::-webkit-scrollbar {
-      display: none;
-    }*/
-    /*div > p{
-      color: red;
-    }
-    h1 + p {
-      color: yellow;
-    }*/
+    .father{
+            overflow: hidden;
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #0c8ac5;
+        }
+ 
+        .son{
+            width: 100%;
+            padding-top: 50%;
+            background-color: #c03035;
+ 
+        }
+        span{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #D8D8D8;
+        }
+ 
+        img{
+            float: left;
+            margin-right: 10px;
+            border: 2px solid #fdf6e3;
+        }
   </style>
 </head>
 <body>
-<!--<div style="background-color: #e5edff;">
-  <img src="./gou.jpg" style="width: 60px;height: 60px;">
-  <span>zxx</span>
-</div>-->
-<!--z-index失效问题-->
-<div class="insert"></div>
-<div class="parent">
-  <div class="subtop"></div>
-  <div class="subbottom"></div>
-</div>
-<div style="width: 50px;white-space: nowrap;text-overflow: ellipsis;background-color: #ff6c00;color: white;overflow:hidden;">
-    woshiguchaowoshiguchaowoshiguchaojjjjjjjjjjj
+<!-- <div class="aside">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore provident dolor in voluptatum tempore non, placeat obcaecati totam ut delectus libero excepturi distinctio asperiores odit nobis soluta, esse aspernatur beatae.
   </div>
-  <a>hello world</a>
-<div style="margin: 200px">
-  <div class="tooltips">鼠标移动到这
-    <span class="tooltipstext">提示文本提示文本提示</span>
+  <div class="content">
+  <div class="inner">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia labore facere delectus quaerat expedita, tenetur recusandae tempora eos natus suscipit voluptatum necessitatibus soluta voluptates modi ullam. Ab minima similique, illum!
   </div>
-  <div style="margin: 60px;">
-    <!--after伪元素是属于他的class元素的孩子的，从定位可以看出来-->
-    <div style="width: 310px;">
-      <div style="float: left;">hello</div>
-      <div style="width: 200px;height: 200px;background: red;position: relative;">
-        <div style="position: absolute;background: green;width: 100px;height: 100px;"></div>
-        <div class="woshi">woshiguchao</div>
-        <!--<div style="width: 100px;height: 100px;position: absolute;background: yellow;">
-          <span>woshiguchaowoshiguchaowoshiguchaowoshiguchao</span>
-        </div>-->
+  </div> -->
+  <!-- <div class="wrap">
+    最外层的宽度为800px
+    <div class="box">里层的元素设置了margin-left:-100px</div>
+</div> -->
+<div class="box">高度为200px</div>
+        <div class="t">高度为20px</div>
+        <div class="container clearfix">
+          <div class="flb flbox1">box1</div>
+          <div class="flb flbox2">box2</div>
+          <div class="flb flbox3">box3</div>
       </div>
-      <div style="float: right;">world</div>
-    </div>
-  </div>
-</div>
-<!--<div style="border: 1px solid red;">
-  &lt;!&ndash;<div style="display: inline-block;">hello</div>
-  <div style="display: inline-block;">world!</div>
-  <div style="float: right;">
-    <div>woshiguchao</div>
-    <div>beiyouuniversity</div>
-  </div>&ndash;&gt;
-  <img src="./gou.jpg" style="width: 60px;height: 60px;float: left;">
-  <p class="hang">hahhahhahhhhhhhhhh
-    hhhhhhhhhhhhhhhhhhhhhhhhhhhahhhhahhahhhhhhhhhhhhhh
-  haaaaaaaaaaaaaaaaaa</p>
-  &lt;!&ndash;<div class="lxp">jinlaile</div>
-  <div id="cityName"></div>&ndash;&gt;
-  &lt;!&ndash;<div style="width: 50px;">
-    <p>woshiguchao</p>
-    <div style="border: 1px solid yellow;">
-      <p>yashangqu</p>
-      <div style="width: 50px;height: 50px;background: red;float: left"></div>
-    </div>
-    <p>hhahhahhahhah</p>
-  </div>&ndash;&gt;
-  &lt;!&ndash;<div class="di1">
-    <div class="di2"></div>
-  </div>&ndash;&gt;
-  &lt;!&ndash;<h1>title</h1>
-  <p>woshiguchao</p>
-  <p>woshixiaochaozi</p>
-  <p>gagga</p>&ndash;&gt;
-  &lt;!&ndash;<div class="outer-container">&ndash;&gt;
-    &lt;!&ndash;<div class="inner-container">&ndash;&gt;
-      &lt;!&ndash;<div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Integer vehicula quam nibh, eu tristique tellus dignissim
-        quis. Integer condimentum ultrices elit ut mattis.
-        Praesent rhoncus tortor metus, nec pellentesque enim
-        mattis nec. Nulla vitae turpis ut dui consectetur
-        pellentesque quis vel est. Curabitur rutrum, mauris ut
-        mollis lobortis, sem est congue lectus, ut sodales nunc
-        leo a libero. Cras quis sapien in mi fringilla tempus
-        condimentum quis velit. Aliquam id aliquam arcu. Morbi
-        tristique aliquam rutrum. Duis tincidunt, orci suscipit
-        cursus molestie, purus nisi pharetra dui, tempor
-        dignissim felis turpis in mi. Vivamus ullamcorper arcu
-        sit amet mauris egestas egestas. Vestibulum turpis neque,
-        condimentum a tincidunt quis, molestie vel justo. Sed
-        molestie nunc dapibus arcu feugiat, ut sollicitudin metus
-        sagittis. Aliquam a volutpat sem. Quisque id magna
-        ultrices, lobortis dui eget, pretium libero. Curabitur
-        aliquam in ante eu ultricies.
-
-        Quisque vitae tincidunt purus. Vivamus feugiat bibendum
-        erat, nec interdum urna porta sed. Nunc lobortis neque
-        orci, ut suscipit nisl congue feugiat. Vivamus feugiat
-        tellus quis cursus sollicitudin. Curabitur dolor massa,
-        dictum ut ipsum in, porttitor pellentesque ante. Aenean
-        egestas cursus tempor. Maecenas semper tortor sit amet
-        egestas cursus. Mauris porttitor quis nisi ut tincidunt.
-        Curabitur adipiscing eleifend nibh. Praesent mauris leo,
-        consequat vitae orci eget, vestibulum bibendum nisi.
-        Aliquam tempus diam ut tortor cursus, eget sodales augue
-        adipiscing. Nulla at dignissim libero.
-      </div>
-  <div>
-    <div style="float: left;">woshiguchao</div>
-    <div></div>
-  </div>&ndash;&gt;
-    &lt;!&ndash;</div>&ndash;&gt;
-  &lt;!&ndash;</div>&ndash;&gt;
-  &lt;!&ndash;<span>wo shi guchao</span>
-  <div id="outer">
-    <div id="inner">some text. some text. some text.
-      <p>this is a paragragh.</p>
-    </div>
-  </div>&ndash;&gt;
-  &lt;!&ndash;<div style="width: 30px;height: 40px;border: 1px solid black;margin-left: 50px;position: relative">
-    <i style="position: absolute;width: 50px;height: 1px;background: black;transform:rotate(45deg)"></i>
-  </div>&ndash;&gt;
-  &lt;!&ndash;&lt;!&ndash;验证display：inline-block时不同div块的内容高度不一样时的差距(他们是会文本的最底部对齐的)&ndash;&gt;
-  <div>
-    <div class="biaoTou">
-    <div style="display: inline-block">
-      <p>woshiguchao</p>
-      <p>woshiguchao</p>
-      <p>woshiguchao</p>
-      <p>woshiguchao</p>
-      <p>woshiguchao</p>
-    </div>
-    <div style="display: inline-block">
-      <p>woshiguchaohahhhhhh</p>
-      <p>woshiguchaohahhhhhh</p>
-      <p>woshiguchaohahhhhhh</p>
-    </div>
-  </div>&ndash;&gt;
-  &lt;!&ndash;一个float后面是块元素还是行内元素是不一样的&ndash;&gt;
-  &lt;!&ndash;<div style="display: none">
-    <div style="width: 200px;height: 200px;float: left;background: red">hello</div>
-    <div style="width: 200px;height: 300px;background: yellow">world</div>
-  </div>
-  <div style="width: 1200px;margin: auto;text-align: center;display: none">
-    <div>woshiguchao</div>
-    <img style="width: 100px;height: 100px" src="./src/assets/deng.png">
-    <div style="background-image: url('./src/assets/deng.png');width: 100px;height: 100px"></div>
-  </div>
-  <div class="nav" style="display: none">
-    <div class="hex-wrap clearfix hex-wrap1">
-      <div class="hex-border-left hex-border-left1 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore1 pull-left"><a href="javascript: void(0);">农业大数据</a></div>
-      <div class="hex-border-right hex-border-right1 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-
-    <div class="hex-wrap clearfix hex-wrap2">
-      <div class="hex-border-left hex-border-left2 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore2 pull-left"><a href="javascript: void(0);">物联监管</a></div>
-      <div class="hex-border-right hex-border-right2 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-
-    <div class="hex-wrap clearfix hex-wrap3">
-      <div class="hex-border-left hex-border-left3 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore3 pull-left"><a href="javascript: void(0);">畜牧</a></div>
-      <div class="hex-border-right hex-border-right3 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-
-    <div class="hex-wrap clearfix hex-wrap4">
-      <div class="hex-border-left hex-border-left4 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore4 pull-left"><a href="javascript: void(0);">质量溯源</a></div>
-      <div class="hex-border-right hex-border-right4 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-
-    <div class="hex-wrap clearfix hex-wrap5">
-      <div class="hex-border-left hex-border-left5 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore5 pull-left"><a href="javascript: void(0);">病虫害监测</a></div>
-      <div class="hex-border-right hex-border-right5 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-
-    <div class="hex-wrap clearfix hex-wrap6">
-      <div class="hex-border-left hex-border-left6 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore6 pull-left"><a href="javascript: void(0);">水产</a></div>
-      <div class="hex-border-right hex-border-right6 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-    <div class="hex-wrap clearfix hex-wrap7">
-      <div class="hex-border-left hex-border-left7 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore7 pull-left"><a href="javascript: void(0);">休闲旅游</a></div>
-      <div class="hex-border-right hex-border-right7 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-    <div class="hex-wrap clearfix hex-wrap8">
-      <div class="hex-border-left hex-border-left8 pull-left">
-        <div class="hex-left"></div>
-      </div>
-      <div class="fore fore8 pull-left"><a href="javascript: void(0);">电子商务</a></div>
-      <div class="hex-border-right hex-border-right8 pull-left">
-        <div class="hex-right"></div>
-      </div>
-    </div>
-  </div>&ndash;&gt;
-  &lt;!&ndash;<nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">W3Cschool</a>
-    </div>
-    <div>
-      &lt;!&ndash;向左对齐&ndash;&gt;
-      <ul class="nav navbar-nav navbar-left">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Java
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">jmeter</a></li>
-            <li><a href="#">EJB</a></li>
-            <li><a href="#">Jasper Report</a></li>
-            <li class="divider"></li>
-            <li><a href="#">分离的链接</a></li>
-            <li class="divider"></li>
-            <li><a href="#">另一个分离的链接</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <button type="submit" class="btn btn-default">
-          向左对齐-提交按钮
-        </button>
-      </form>
-      <p class="navbar-text navbar-left">向左对齐-文本</p>
-      &lt;!&ndash;向右对齐&ndash;&gt;
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Java <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">jmeter</a></li>
-            <li><a href="#">EJB</a></li>
-            <li><a href="#">Jasper Report</a></li>
-            <li class="divider"></li>
-            <li><a href="#">分离的链接</a></li>
-            <li class="divider"></li>
-            <li><a href="#">另一个分离的链接</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <button type="submit" class="btn btn-default">
-          向右对齐-提交按钮         </button>
-      </form>
-      <p class="navbar-text navbar-right">向右对齐-文本</p>
-    </div>
-  </nav>&ndash;&gt;
-</div>-->
-<!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+      <ul class="table"> 
+        <li>I am li</li>
+        <li>I am li</li>
+        <li>I am li</li>
+        <li>I am li</li>
+        <li>I am li</li>
+    </ul>
+    <section class="father">
+      <div class="son"><span><img src="https://p2.ssl.cdn.btime.com/t0167d9ebac0d0e1828.jpg" alt="" width="200px"> 王也, 武当派弟子（现已离开武当），八奇技之一风后奇门的继承人，靠占卜悟出天道，却又作出甘于投身乱世的选择。外表一副老好人的温良相，谦谦有礼如温吞水般，做事也经常是一副没精打采，貌似没睡醒的样子。优哉游哉还脾气软，代表举动经常是歉意笑着作出让步。似乎对什么都无所谓，一副悠然道人之姿，但是在涉及到家人安危时毫不含糊，甚至为此做出过有失冷静的举动。不小心爆粗都会拜祖道歉的出家人，实力在后生一辈中甚至称得上头筹，暂时只有一次完全没预料到地阴沟里翻船。</span></div>
+  </section>
 <script>
-  /**
-   * 定位当前城市
-   */
-  /*$(document).ready(function(){
-    var areaCode = returnCitySN["cid"]; //地区编码
-    var thisIp =  returnCitySN["cip"];  //IP
-    var areaName = returnCitySN["cname"]; //只能获取到省
-    console.log('result',areaName)
-  })*/
+  function argsAsArray(fn, arr) {
+    console.log(...arr)
+return fn(...arr)
+}
+argsAsArray(function (greeting, name, punctuation) {console.log( greeting + ', ' + name + (punctuation || '!'));}, ['gu','chao'])
+
+function functionFunction(str) {
+    var ret = Array.prototype.slice.call(arguments);
+    var temp = function(str) {
+      let args = Array.prototype.slice.call(arguments)
+
+        // ret = ret.concat(args);
+        return functionFunction.apply(null,ret.concat(args));
+    };
+    temp.toString = function(){
+        return ret;
+    };
+    return temp;
+}
+console.log(functionFunction(1)(2)(3).toString())
+
 </script>
 </body>
 </html>
