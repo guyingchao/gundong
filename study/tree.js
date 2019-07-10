@@ -293,4 +293,5 @@ function levelOrder22 (root) {
   traverorder(root, 0)
   return res
 }
+
 console.log(levelOrder21(tree.root))

@@ -1,12 +1,14 @@
+// import { fn } from "moment";
+
 /**
  * Created by win10 on 2019/4/2.
  */
 // console.log('guchao')
-var a = 'a.b.c'.replace(/(.)\.(.)\.(.)/,'$2.$1.$0')
+// var a = 'a.b.c'.replace(/(.)\.(.)\.(.)/,'$2.$1.$0')
 // console.log(a)
-var name = 'tom'
-var a = {name:name};
-var b = Object.assign(a)
+// var name = 'tom'
+// var a = {name:name};
+// var b = Object.assign(a)
 // console.log(b.name)
 
 /*var a = 1
@@ -35,6 +37,18 @@ new Promise((resolve,reject)=>{
 })
 console.log(5)*/
 
-var val = 3
-var obj = {val}
-console.log(obj)
+function tong(arr,fn){
+	if(arr instanceof Array){
+		arr.forEach((item,index)=>{
+			fn(index,item)
+		})
+	} else {
+		for(var key in arr){
+			fn(key,arr[key])
+		}
+	}
+}
+var arr = {1:'gu',2:'chao'}
+tong(arr,function(index,item){
+	console.log(index,item)
+})
