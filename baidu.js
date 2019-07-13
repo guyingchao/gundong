@@ -1,4 +1,3 @@
-// import { fn } from "moment";
 
 /**
  * Created by win10 on 2019/4/2.
