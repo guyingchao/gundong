@@ -1,14 +1,3 @@
-/**
- * Created by win10 on 2019/4/2.
- */
-// console.log('guchao')
-var a = 'a.b.c'.replace(/(.)\.(.)\.(.)/,'$2.$1.$0')
-// console.log(a)
-var name = 'tom'
-var a = {name:name};
-var b = Object.assign(a)
-// console.log(b.name)
-
 /*var a = 1
 var b= []
 var c = ''
