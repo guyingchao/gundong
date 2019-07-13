@@ -3,7 +3,6 @@
 /**
  * Created by win10 on 2019/4/2.
  */
-// console.log('guchao')
 // var a = 'a.b.c'.replace(/(.)\.(.)\.(.)/,'$2.$1.$0')
 // console.log(a)
 // var name = 'tom'
