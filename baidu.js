@@ -1,3 +1,12 @@
+/*var a = 1
+var b= []
+var c = ''
+var d = true
+console.log((c&&d)===true)
+console.log((b&&c)=== true)
+console.log((a||b)===true)
+console.log((d||a)===true)*/
+
 /*console.log(/^a[xyz]\d*!/.test('ax'))
 console.log(/^a[xyz]\d*!/.test('^axyz'))
 console.log(/^a[xyz]\d*!/.test('^axd'))
