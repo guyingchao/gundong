@@ -293,4 +293,28 @@ function levelOrder22 (root) {
   traverorder(root, 0)
   return res
 }
-console.log(levelOrder21(tree.root))
+// console.log(levelOrder21(tree.root))
+
+// 输入两棵二叉树A，B，判断B是不是A的子结构。
+function HasSubtree (pRoot1, pRoot2) {
+  var result = false
+  if (pRoot1 && pRoot2) {
+    if (pRoot1.val === pRoot2.val) {
+      result = treetotwo(pRoot1, pRoot2)
+    }
+    if (!result) {
+      result = HasSubtree(pRoot1.leftChild, pRoot2)
+    }
+    if (!result) {
+      result = HasSubtree(pRoot1.rightChild, pRoot2)
+    }
+  }
+  return result
+}
+function treetotwo (pRoot1, pRoot2) {
+  if (pRoot2 == null) return true
+  if (pRoot1 == null) return false
+  if (pRoot1.val !== pRoot2.val) return false
+  return treetotwo(pRoot1.leftChild, pRoot2.leftChild) && treetotwo(pRoot1.rightChild, pRoot2.rightChild)
+}
+console.log(HasSubtree(tree.root, tree2.root))

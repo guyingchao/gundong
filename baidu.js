@@ -1,29 +1,10 @@
-/*var a = 1
-var b= []
-var c = ''
-var d = true
-console.log((c&&d)===true)
-console.log((b&&c)=== true)
-console.log((a||b)===true)
-console.log((d||a)===true)*/
+function GetLeastNumbers_Solution(input, k)
+{
+    // write code here
+    input.sort(function(a,b){
+        return a-b
+    })
+    return input.splice(0,k)
+}
+console.log(GetLeastNumbers_Solution([4,5,1,6,2,7,3,8],10))
 
-/*console.log(/^a[xyz]\d*!/.test('ax'))
-console.log(/^a[xyz]\d*!/.test('^axyz'))
-console.log(/^a[xyz]\d*!/.test('^axd'))
-console.log(/^a[xyz]\d*!/.test('axyz123'))*/
-
-/*console.log(1)
-setTimeout(function () {
-  console.log(2)
-},0)
-new Promise((resolve,reject)=>{
-  console.log(3)
-  resolve()
-}).then(()=>{
-  console.log(4)
-})
-console.log(5)*/
-
-var val = 3
-var obj = {val}
-console.log(obj)
