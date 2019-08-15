@@ -16,8 +16,8 @@
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="img">
+<div id="container">
+  <!-- <div class="img">
     <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
   </div>
   <div class="img">
@@ -46,22 +46,27 @@
   </div>
   <div class="img">
     <img class="pic" alt="加载中" data-src="../imgs/gou.jpg">
-  </div>
+  </div> -->
 </div>
 <script>
-  window.onload = function () {
+	var html = '';
+	for(var i=0;i<10;i++){
+		html += '<div class="img"><img class="pic" alt="加载中" data-src="../imgs/gou.jpg"></div>'
+	}
+	document.getElementById('container').innerHTML = html;
+  window.onload = function () { //是个异步
     lazyLoad()
-  }
+	}
   //获取所有图片
   const imgs = document.getElementsByTagName('img')
   //获取可视区域的高度
   const viewHeight = window.innerHeight||document.documentElement.clientHeight
-  //用于记录当前显示到了那一张图片，避免每次都从第一张开始
+	//用于记录当前显示到了那一张图片，避免每次都从第一张开始
   let num = 0
   function lazyLoad() {
     for(let i = num; i < imgs.length; i++){
       //可视区域的高度减去元素距离可视区域的顶部的高度
-      let distance = viewHeight - imgs[i].getBoundingClientRect().top
+			let distance = viewHeight - imgs[i].getBoundingClientRect().top
       if(distance>=0){
         imgs[i].src = imgs[i].getAttribute('data-src')
         num = i+1
@@ -74,18 +79,18 @@
     let timeout;
     return function(){
       let context = this;
-      let args = arguments
+			let args = arguments
       if(!timeout){
         timeout = setTimeout(() => {
           timeout = null;
-          fn.apply(context,args);
+          fn.apply(this,arguments);
         },delay)
       }
     }
   }
 
   //防抖函数(当持续触发事件时，debounce 会合并事件且不会去触发事件，
-  //当一定时间内没有触发再这个事件时，才真正去触发事件。)
+  //当一定时间内没有再触发这个事件时，才真正去触发事件。)
   function debounce(fn, delay) {
     // 持久化一个定时器 timer
     let timer = null;
@@ -94,16 +99,17 @@
       // 通过 'this' 和 'arguments'
       // 获得函数的作用域和参数
       let context = this;
-      let args = arguments;
+			let args = arguments;
       // 如果事件被触发，清除 timer 并重新开始计时
       if(timer) clearTimeout(timer);
       timer = setTimeout(function() {
         fn.apply(context, args);
       }, delay);
     }
-  }
+	}
+	// window.addEventListener('scroll',lazyLoad)	
   let better_scroll = throttle(lazyLoad,1000)
-  window.addEventListener('scroll',better_scroll)
+	window.addEventListener('scroll',better_scroll)
 </script>
 </body>
 </html>

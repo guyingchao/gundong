@@ -1,9 +1,9 @@
 /**
  * 定义二叉树的节点结构
- * 在原型连上实现
+ * 在原型链上实现
  */
-function Node () {
-  this.val = null
+function Node (val) {
+  this.val = val
   this.leftChild = null
   this.rightChild = null
 }
@@ -13,7 +13,7 @@ function BinaryTree () {
 }
 
 BinaryTree.prototype = {
-  constructor: Node,
+  // constructor: Node,
   insertNode: function (val) {
     if (this.root === null) {
       this.root = {val}
@@ -37,13 +37,15 @@ BinaryTree.prototype = {
 function insertData (node, val) {
   if (val < node.val) {
     if (node.leftChild == null) {
-      node.leftChild = { val }
+			// node.leftChild = { val }
+      node.leftChild = new Node(val)		
     } else {
       insertData(node.leftChild, val)
     }
   } else {
     if (node.rightChild == null) {
-      node.rightChild = { val }
+			// node.rightChild = { val }
+      node.rightChild = new Node(val)					
     } else {
       insertData(node.rightChild, val)
     }
@@ -51,6 +53,12 @@ function insertData (node, val) {
 }
 
 var tree = new BinaryTree()
+var tree2 = new BinaryTree()
+var tree3 = new BinaryTree()
+
+tree2.insertNode(10)
+tree2.insertNode(8)
+tree2.insertNode(20)
 
 tree.insertNode(5)
 tree.insertNode(10)
@@ -58,6 +66,15 @@ tree.insertNode(1)
 tree.insertNode(3)
 tree.insertNode(20)
 tree.insertNode(8)
+
+tree3.insertNode(8)
+tree3.insertNode(6)
+tree3.insertNode(10)
+tree3.insertNode(5)
+tree3.insertNode(7)
+tree3.insertNode(9)
+tree3.insertNode(11)
+
 // tree.travelTree(tree.root)
 console.log(JSON.stringify(tree))
 // {"root":{"val":5,"rightChild":{"val":10,"rightChild":{"val":20},"leftChild":{"val":8}},"leftChild":{"val":1,"rightChild":{"val":3}}}}
@@ -285,15 +302,15 @@ function levelOrder22 (root) {
   let res = []
   function traverorder (node, layer) {
     if (node) {
-      traverorder(node.leftChild, layer + 1)
       res[layer] ? res[layer].push(node.val) : res[layer] = [node.val]
+      traverorder(node.leftChild, layer + 1)
       traverorder(node.rightChild, layer + 1)
     }
   }
   traverorder(root, 0)
   return res
 }
-// console.log(levelOrder21(tree.root))
+console.log(levelOrder21(tree.root))
 
 // 输入两棵二叉树A，B，判断B是不是A的子结构。
 function HasSubtree (pRoot1, pRoot2) {
@@ -317,4 +334,44 @@ function treetotwo (pRoot1, pRoot2) {
   if (pRoot1.val !== pRoot2.val) return false
   return treetotwo(pRoot1.leftChild, pRoot2.leftChild) && treetotwo(pRoot1.rightChild, pRoot2.rightChild)
 }
-console.log(HasSubtree(tree.root, tree2.root))
+// console.log(HasSubtree(tree.root, tree2.root))
+
+// 树的镜像
+function Mirror (root) {
+  if (!root) return []
+  var res = []
+  function traverorder (node, layer) {
+    if (node) {
+      traverorder(node.leftChild, layer + 1)
+      res[layer] ? res[layer].push(node.val) : res[layer] = [node.val]
+      traverorder(node.rightChild, layer + 1)
+    }
+  }
+  traverorder(root, 0)
+  console.log(res)
+  var arrss = []
+  res.forEach(function (item) {
+    for (var j = item.length - 1; j >= 0; j--) {
+      arrss.push(item[j])
+    }
+  })
+  return arrss
+}
+// console.log(Mirror(tree3.root))
+
+// 根据前序和中序重新重建一棵树
+function reConstructBinaryTree (pre, vin) {
+  // write code here
+  if (pre.length === 0 || vin.length === 0) {
+    return null
+  }
+  var index = vin.indexOf(pre[0])
+  var left = vin.slice(0, index)
+  var right = vin.slice(index + 1)
+  return {
+    val: pre[0],
+    left: reConstructBinaryTree(pre.slice(1, index + 1), left),
+    right: reConstructBinaryTree(pre.slice(index + 1), right)
+  }
+}
+// console.log(reConstructBinaryTree([1, 2, 4, 7, 3, 5, 6, 8], [4, 7, 2, 1, 5, 3, 8, 6]))

@@ -8,140 +8,40 @@
       margin: 0;
       padding: 0;
     }
-    .aside{
-    float: left;
-    margin-right: -200px;
-    width: 200px;
-    background-color: red;
-}
-.content{
-    float: right;
-}
-.content .inner{
-    margin-left: 200px;
-    background-color: blue;
-}
-.wrap{background-color: #f00;width: 800px;margin: 100px auto 0; height: 300px;font-size: 30px;}
-            /* .box{background-color: #007AFF;margin-left: -100px;height: 200px;} */
-            .box{background-color: #007AFF;margin-bottom: -100px;height: 200px;}
-            .t{background-color: #f00;height: 20px;width: 200px;}
-            .container{
-                margin: 100px auto 0;
-                border: 1px solid #000;
-                width: 300px;
-            }
-            .clearfix::after{
-                display: block;
-                content: "";
-                height: 0;
-                font-size: 0;
-                clear: both;
-            }
-            .clearfix{
-                zoom: 1;
-            }
-            .flb{
-                float: left;
-                width: 100px;
-                height: 100px;
-                margin-left:-25px;
-                /*margin-left: -25px;*/
-            }
-            .flbox1{background-color: rgba(33, 114, 214, 0.8);}
-            .flbox2{background-color: rgba(255, 82, 0, 0.8);}
-            .flbox3{background-color: rgba(90, 243, 151, 0.8);}
-            ul.table{
-        border:1px #ccc solid;
-        margin-top:100px;
-    }
-    ul.table li{
-        border-bottom: 1px #ccc solid;
-        list-style: none;
-    }
-    .father{
-            overflow: hidden;
-            position: absolute;
-            left: 10px;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #0c8ac5;
-        }
- 
-        .son{
-            width: 100%;
-            padding-top: 50%;
-            background-color: #c03035;
- 
-        }
-        span{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            color: #D8D8D8;
-        }
- 
-        img{
-            float: left;
-            margin-right: 10px;
-            border: 2px solid #fdf6e3;
-        }
+		#parent{
+			width: 200px;
+		}
+		.child{
+			width: 100%;
+			height: 0;
+			padding-bottom: 50%;
+			background: red;
+		}
   </style>
 </head>
 <body>
-<!-- <div class="aside">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore provident dolor in voluptatum tempore non, placeat obcaecati totam ut delectus libero excepturi distinctio asperiores odit nobis soluta, esse aspernatur beatae.
-  </div>
-  <div class="content">
-  <div class="inner">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia labore facere delectus quaerat expedita, tenetur recusandae tempora eos natus suscipit voluptatum necessitatibus soluta voluptates modi ullam. Ab minima similique, illum!
-  </div>
-  </div> -->
-  <!-- <div class="wrap">
-    最外层的宽度为800px
-    <div class="box">里层的元素设置了margin-left:-100px</div>
-</div> -->
-<div class="box">高度为200px</div>
-        <div class="t">高度为20px</div>
-        <div class="container clearfix">
-          <div class="flb flbox1">box1</div>
-          <div class="flb flbox2">box2</div>
-          <div class="flb flbox3">box3</div>
-      </div>
-      <ul class="table"> 
-        <li>I am li</li>
-        <li>I am li</li>
-        <li>I am li</li>
-        <li>I am li</li>
-        <li>I am li</li>
-    </ul>
-    <section class="father">
-      <div class="son"><span><img src="https://p2.ssl.cdn.btime.com/t0167d9ebac0d0e1828.jpg" alt="" width="200px"> 王也, 武当派弟子（现已离开武当），八奇技之一风后奇门的继承人，靠占卜悟出天道，却又作出甘于投身乱世的选择。外表一副老好人的温良相，谦谦有礼如温吞水般，做事也经常是一副没精打采，貌似没睡醒的样子。优哉游哉还脾气软，代表举动经常是歉意笑着作出让步。似乎对什么都无所谓，一副悠然道人之姿，但是在涉及到家人安危时毫不含糊，甚至为此做出过有失冷静的举动。不小心爆粗都会拜祖道歉的出家人，实力在后生一辈中甚至称得上头筹，暂时只有一次完全没预料到地阴沟里翻船。</span></div>
-  </section>
+	<div id="parent">
+		<div class="child">woshiguchao</div>
+	</div>
 <script>
-  function argsAsArray(fn, arr) {
-    console.log(...arr)
-return fn(...arr)
-}
-argsAsArray(function (greeting, name, punctuation) {console.log( greeting + ', ' + name + (punctuation || '!'));}, ['gu','chao'])
-
-function functionFunction(str) {
-    var ret = Array.prototype.slice.call(arguments);
-    var temp = function(str) {
-      let args = Array.prototype.slice.call(arguments)
-
-        // ret = ret.concat(args);
-        return functionFunction.apply(null,ret.concat(args));
-    };
-    temp.toString = function(){
-        return ret;
-    };
-    return temp;
-}
-console.log(functionFunction(1)(2)(3).toString())
-
+	// function Elem (id){
+	// 	this.elem = document.getElementById(id)
+	// }
+	// Elem.prototype.html=function(val){
+	// 	let elem = this.elem
+	// 	if(val){
+	// 		elem.innerHTML = val
+	// 	}
+	// 	return this
+	// }
+	// Elem.prototype.onth=function(type,fn){
+	// 	let elem = this.elem
+	// 	elem.addEventListener(type,fn)
+	// }
+	// var div = new Elem('div1')
+	// div.html('<p>hello</p>').onth('click',function(){
+	// 	console.log('jnali')
+	// })
 </script>
 </body>
 </html>

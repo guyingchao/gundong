@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+		.colors{
+			color: yellow;
+		}
+		#ids{
+			color: red!important;
+		}
+  </style>
+</head>
+<body>
+	<div>
+		<!-- css的优先级：
+		1.!import；
+		2.内联样式；
+		3.id选择器
+		4.类选择器，属性选择器（type=‘radio’），伪类（：hover）；
+		5.类型选择器（h1），伪元素（：：before）；
+		6.通配符（*），关系选择符（+ > - ' '）和否定伪类（：not）对优先级没有影响,但是：not（里面的元素选择器会影响）；
+		7.无视Dom树中的距离；
+		8.为目标元素直接添加样式，永远比继承样式的优先级高，无视优先级的继承规则。 -->
+		<div id="ids" class="class1">
+			<div class="colors">guchao</div>
+		</div>
+	</div>
+	
+
+</body>
+</html>

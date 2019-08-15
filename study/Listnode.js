@@ -14,15 +14,17 @@ function getList(arr) {
   let newlist = new ListNode(-1)
   let p = newlist
   for(let i = 0; i < arr.length; i++){
-    let temp = new ListNode(arr[i])
-    p.next = temp
+		let temp = new ListNode(arr[i])
+		temp.next = p.next
+		p.next = temp
     p = temp
   }
-  //console.log(JSON.stringify(newlist.next))
+  // console.log('jiegou',JSON.stringify(newlist.next))
   return newlist.next
 }
-//getList()
-//链表翻转(最不好的新建链表的方法)
+getList([1,2,3,4])
+
+//链表翻转（头插法）
 function reverseList(head) {
   if(!head||!head.next){
     return head
@@ -38,8 +40,10 @@ function reverseList(head) {
   console.log(JSON.stringify(phead.next))
   return phead.next
 }
+
+// 这个也是头插法
 function reverseList2(head) {
-  if(!head||!head.next){
+  if(!head || !head.next){
     return head
   }
   let phead = new ListNode(-1)
@@ -51,7 +55,7 @@ function reverseList2(head) {
     phead.next = p
     p = q
   }
-  console.log(JSON.stringify(phead.next))
+  // console.log(JSON.stringify(phead.next))
   return phead.next
 }
 
@@ -143,7 +147,7 @@ function quchongNode(head){
       }
       pre.next = last.next
       last = last.next
-    } else{
+    } else {
       pre = pre.next
       last = last.next
     }
@@ -151,7 +155,7 @@ function quchongNode(head){
   console.log(JSON.stringify(phead.next))
   return phead.next
 }
-// let heads = getList([1,1,3,3,4,4,4])
+// let heads = getList([1,2,3,3,4,4,4])
 // quchongNode(heads)
 
 //两个链表的第一个公共节点
@@ -168,7 +172,6 @@ function FindFirstCommonNode(pHead1, pHead2)
   if(dis>0){
     long = pHead1
     short = pHead2
-
   } else{
     long = pHead2
     short = pHead1
@@ -193,11 +196,11 @@ function FindFirstCommonNode(pHead1, pHead2)
   }
 }
 
-let heads1 = getList([1,2,3])
-let heads2 = getList([2,3])
-let heads3 = getList([4,5])
-heads1.next.next.next = heads3
-heads2.next.next = heads3
+// let heads1 = getList([1,2,3])
+// let heads2 = getList([2,3])
+// let heads3 = getList([4,5])
+// heads1.next.next.next = heads3
+// heads2.next.next = heads3
 // console.log(FindFirstCommonNode(heads1,heads2))
 
 //斐波那契数列的非递归算法
@@ -216,3 +219,20 @@ function fibonacci(n){
 }
 // console.log(fibonacci(5))
 
+
+function printListFromTailToHead(head)
+{
+		// write code here
+		var ArrayList = []
+    if(head===null) return ArrayList
+    var p = head
+    while(p!==null){
+			ArrayList.unshift(p.val)
+			p = p.next
+		}
+		console.log('1212',JSON.stringify(ArrayList))
+    return ArrayList
+}
+
+let heads = getList([1,2,3,3,4,4,4])
+printListFromTailToHead(heads)

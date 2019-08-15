@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+		.one{
+			width: 150px;
+			height: 50px;
+			background-color: red;
+			float: left;
+		}
+		.two{
+			width: 250px;
+			height: 100px;
+			background-color: yellow;
+			float: left;
+		}
+		/* .quchu{
+			clear: both;
+		} */
+
+		/* #container::after{
+			display: block;
+			content: '';
+			height: 0;
+			visibility: hidden;
+			clear: both;
+		}
+		#container{
+			zoom: 1;
+		} */
+
+		#container{
+			overflow: hidden;
+		} 
+		.test1{
+			width: 50px;
+			height: 50px;
+			background: blue;
+		}
+		.test2{
+			width: 50px;
+			height: 50px;
+			background: green;
+		}
+
+		.child{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+  </style>
+</head>
+<body>
+	<div>
+		<!-- 清除浮动 -->
+		<div id="container">
+				<div class="one fl"></div>
+				<div class="two fr"></div>
+				<!-- <div class="quchu"></div> -->
+		</div>
+
+		<!-- margin塌陷1:垂直并列 -->
+		<div class="test1"></div>
+		<div class="test2"></div>
+
+		<!-- margin塌陷2：嵌套关系：只针对直接嵌套 -->
+		<!-- 3种方法：1，为父亲设置overflow:hidden;
+						2,为父亲设置padding
+						3，为父亲设置border，并设置为透明 -->
+		<div class="parent">
+			<div class="child"></div>
+		</div>
+
+	</div>
+	
+
+</body>
+</html>
