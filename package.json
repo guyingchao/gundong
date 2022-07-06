@@ -20,7 +20,7 @@
     "element-ui": "^2.4.2",
     "mock": "^0.1.1",
     "mockjs": "^1.0.1-beta3",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.21",
     "vue": "^2.5.2",
     "vue-cookies": "^1.5.6",
